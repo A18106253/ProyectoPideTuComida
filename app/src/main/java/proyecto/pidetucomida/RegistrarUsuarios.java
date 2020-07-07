@@ -126,5 +126,5 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         registrar();
     }
-    //finalizado
+
 }

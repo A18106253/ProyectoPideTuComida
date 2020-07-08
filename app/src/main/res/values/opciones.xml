@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_producto">
+        <item>Seleccione</item>
+        <item>COMIDAS</item>
+        <item>BEBIDAS</item>
+        <item>OFERTAS</item>
+
+    </string-array>
+</resources>

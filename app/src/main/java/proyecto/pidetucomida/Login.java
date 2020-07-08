@@ -54,13 +54,19 @@ public class Login extends AppCompatActivity{
     public void LoginUser(){
         progress.setMessage("Iniciando sesion....");
         progress.show();
+
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
                if (task.isSuccessful()){
                    Toast.makeText(Login.this,"bienvenido a nuestra App.."+email,Toast.LENGTH_LONG).show();
-                   startActivity(new Intent(Login.this,MenuPrincipal.class));
-                   finish();
+                   if(email.equals("lopeztomaylla1299@gmail.com")){
+                      startActivity(new Intent(Login.this,RegistrarProductos.class));
+                   }else {
+                       startActivity(new Intent(Login.this,MenuActivity.class)); //para probar nomas
+                       finish();
+                   }
                } else{
                    Toast.makeText(Login.this,"No se pudo iniciar sesión verifica los datos",Toast.LENGTH_LONG).show();
                }

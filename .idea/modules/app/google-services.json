@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "522503839793",
+    "firebase_url": "https://pidetucomida-b517d.firebaseio.com",
+    "project_id": "pidetucomida-b517d",
+    "storage_bucket": "pidetucomida-b517d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522503839793:android:d34c1a777808ca6bb3f510",
+        "android_client_info": {
+          "package_name": "proyecto.pidetucomida"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "522503839793-li1qgnb691mv67mevqa39ubk2ed199aq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "proyecto.pidetucomida",
+            "certificate_hash": "0eceb36050ba8e1bd53ccefcc141da8aeaefdbe9"
+          }
+        },
+        {
+          "client_id": "522503839793-22mp4nta5oj3mn8bialsk7f6smtht3uj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7UDj7Xoak3duYXIzLAV4vgBJMGxHMDr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "522503839793-22mp4nta5oj3mn8bialsk7f6smtht3uj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

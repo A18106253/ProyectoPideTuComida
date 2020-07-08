@@ -10,10 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_icono_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".RegistrarProductos"></activity>
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".RegistrarProductos" />
         <activity android:name=".RecuperContra" />
-        <activity android:name=".MenuPrincipal" />
         <activity android:name=".RegistrarUsuarios" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">

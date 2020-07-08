@@ -105,7 +105,7 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task2) {
                                     if (task2.isSuccessful()){
-                                        startActivity(new Intent(RegistrarUsuarios.this,MenuPrincipal.class));
+                                        startActivity(new Intent(RegistrarUsuarios.this,MenuActivity.class)); //solo por la prueba
                                         finish();
                                     }
                                     else {

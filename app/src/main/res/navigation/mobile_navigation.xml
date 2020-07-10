@@ -10,6 +10,26 @@
         android:name="proyecto.pidetucomida.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_platos"
+        android:name="proyecto.pidetucomida.ui.platos.PlatosFragment"
+        android:label="@string/menu_platos"
+        tools:layout="@layout/fragment_platos" />
+    <fragment
+        android:id="@+id/nav_bebidas"
+        android:name="proyecto.pidetucomida.ui.bebidas.BebidasFragment"
+        android:label="@string/menu_bebidas"
+        tools:layout="@layout/fragment_bebidas" />
+    <fragment
+        android:id="@+id/nav_ofertas"
+        android:name="proyecto.pidetucomida.ui.ofertas.OfertasFragment"
+        android:label="@string/menu_ofertas"
+        tools:layout="@layout/fragment_ofertas" />
+    <fragment
+        android:id="@+id/nav_carrito"
+        android:name="proyecto.pidetucomida.ui.carrito.CarritoFragment"
+        android:label="@string/menu_carrito"
+        tools:layout="@layout/fragment_carrito" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +42,5 @@
         android:name="proyecto.pidetucomida.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
 </navigation>

@@ -45,6 +45,7 @@ public class RecuperContra extends AppCompatActivity {
                     resetPassword();
                 }else{
                     Toast.makeText(RecuperContra.this,"Debe ingresar su Email", Toast.LENGTH_SHORT).show();
+                    edtEmail.setText(" ");
                 }
             }
         });

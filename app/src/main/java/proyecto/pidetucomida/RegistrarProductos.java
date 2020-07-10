@@ -39,6 +39,7 @@ public class RegistrarProductos extends AppCompatActivity {
     final int REQUEST_CODE_GALLERY = 999;
     public static SQLiteHelper sqLiteHelper;
 
+    int seleccion=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class RegistrarProductos extends AppCompatActivity {
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio DECIMAL(6,2),descripcion VARCHAR,valoracion FLOAT)");
 
         ArrayList<String> ComboOpciones = new ArrayList<String>();
-        ComboOpciones.add("Seleccione");
+        ComboOpciones.add("SELECCIONE");
         ComboOpciones.add("COMIDAS");
         ComboOpciones.add("BEBIDAS");
         ComboOpciones.add("OFERTAS");
@@ -67,7 +68,8 @@ public class RegistrarProductos extends AppCompatActivity {
          cboTipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
              @Override
              public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-             Toast.makeText(adapterView.getContext(),"Seleccionado : "+adapterView.getItemAtPosition(i),Toast.LENGTH_LONG).show();
+             Toast.makeText(adapterView.getContext(),"Seleccionado : "+i+adapterView.getItemAtPosition(i),Toast.LENGTH_LONG).show();
+                 seleccion=cboTipo.getSelectedItemPosition();
              }
 
              @Override
@@ -96,6 +98,15 @@ public class RegistrarProductos extends AppCompatActivity {
                             rbvaloracion.getRating()
                                         );
                     Toast.makeText(getApplicationContext(), "Agregado exitosamente!", Toast.LENGTH_SHORT).show();
+                    if (seleccion==1){
+                    Intent intent =new Intent(RegistrarProductos.this,MenuActivity.class);
+                    startActivity(intent);
+
+                    } else if(seleccion==1){
+                        Intent intent =new Intent(RegistrarProductos.this,MenuActivity.class);
+                        startActivity(intent);
+
+                    }
                     edtNombre.setText(" ");
                     edtPrecio.setText(" ");
                     Foto.setImageResource(R.mipmap.ic_launcher);

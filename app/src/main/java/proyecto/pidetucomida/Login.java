@@ -45,6 +45,7 @@ public class Login extends AppCompatActivity{
                     LoginUser();
                 }else{
                     Toast.makeText(Login.this,"Complete los campos ",Toast.LENGTH_LONG).show();
+
                 }
             }
         });
@@ -67,6 +68,8 @@ public class Login extends AppCompatActivity{
                        startActivity(new Intent(Login.this,MenuActivity.class)); //para probar nomas
                        finish();
                    }
+                   edtEmail.setText(" ");
+                   edtPass.setText(" ");
                } else{
                    Toast.makeText(Login.this,"No se pudo iniciar sesión verifica los datos",Toast.LENGTH_LONG).show();
                }

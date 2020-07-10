@@ -2,7 +2,12 @@
 <resources>
     <color name="colorPrimary">#F39C12</color>
     <color name="colorPrimaryDark">#17202A</color>
+    <color name="colorNegro">#000000</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorRojo">#7B241C</color>
     <color name="colorblanco">#ffffff</color>
+    <color name="colorRosa">#FF0033</color>
+    <color name="colorAmarillo">#D68910</color>
+    <color name="colorRosaOscuro">#990033</color>
+    <color name="RojoTransparente">#C62828</color>
 </resources>

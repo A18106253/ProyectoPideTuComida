@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +26,6 @@ import java.util.Objects;
 
 public class RegistrarUsuarios extends AppCompatActivity implements View.OnClickListener{
       EditText edtNombre,edtApellido,edtEmail,edtPass,edtDireccion,edtTelefono;
-      Button btnRegistrar;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference database;
@@ -46,7 +46,7 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
 
         progress =new ProgressDialog(this);
        // btnRegistrar.setOnClickListener(this);
-        //FirebaseApp.initializeApp(this);
+       FirebaseApp.initializeApp(this);
 
 
     }
@@ -85,6 +85,7 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
         }
         progress.setMessage("Realizando registro en linea....");
         progress.show();
+
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -99,13 +100,13 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
                             map.put("telefono",telefono);
 
                             String id = firebaseAuth.getCurrentUser().getUid();
-
                             database.child("Usuario").child(id)
                                 .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task2) {
                                     if (task2.isSuccessful()){
-                                        startActivity(new Intent(RegistrarUsuarios.this,MenuActivity.class)); //solo por la prueba
+                                        Intent intent = new Intent(RegistrarUsuarios.this,MenuActivity.class);
+                                        startActivity(intent); //solo por la prueba
                                         finish();
                                     }
                                     else {
@@ -121,10 +122,19 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
                     }
                 });
     }
+    private void Limpiar(){
+        edtNombre.setText(" ");
+        edtApellido.setText(" ");
+        edtEmail.setText(" ");
+        edtPass.setText(" ");
+        edtDireccion.setText(" ");
+        edtTelefono.setText(" ");
+    }
 
     @Override
     public void onClick(View view) {
         registrar();
+        Limpiar();
     }
 
 }

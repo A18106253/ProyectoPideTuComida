@@ -25,6 +25,14 @@
             android:icon="@drawable/carrito"
             android:title="@string/menu_carrito" />
         <item
+            android:id="@+id/nav_empresa"
+            android:icon="@drawable/empresa"
+            android:title="@string/menu_empresa" />
+        <item
+            android:id="@+id/nav_desarrolladores"
+            android:icon="@drawable/desarrollador"
+            android:title="@string/menu_desarrolladores" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />

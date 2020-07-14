@@ -1,4 +1,4 @@
-package proyecto.pidetucomida;
+package proyecto.pidetucomida.actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,7 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
+
+import proyecto.pidetucomida.R;
 
 public class RegistrarUsuarios extends AppCompatActivity implements View.OnClickListener{
       EditText edtNombre,edtApellido,edtEmail,edtPass,edtDireccion,edtTelefono;
@@ -105,7 +105,7 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task2) {
                                     if (task2.isSuccessful()){
-                                        Intent intent = new Intent(RegistrarUsuarios.this,MenuActivity.class);
+                                        Intent intent = new Intent(RegistrarUsuarios.this, MenuActivity.class);
                                         startActivity(intent); //solo por la prueba
                                         finish();
                                     }

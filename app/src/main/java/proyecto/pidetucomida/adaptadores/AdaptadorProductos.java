@@ -1,4 +1,4 @@
-package Modelo.adaptador;
+package proyecto.pidetucomida.adaptadores;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,15 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import java.util.List;
 
-import Modelo.Productos;
 import proyecto.pidetucomida.R;
+import proyecto.pidetucomida.clases.Productos;
 
 public class AdaptadorProductos extends BaseAdapter {
-
     private List<Productos> list;
     private Activity activity;
 
@@ -43,8 +41,8 @@ public class AdaptadorProductos extends BaseAdapter {
     public View getView(int posicion, View view, ViewGroup viewGroup) {
         View v = view;
         if (view == null) {
-          LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-          v=inflater.inflate(R.layout.fragment_gallery,null);
+            LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v=inflater.inflate(R.layout.fragment_gallery,null);
         }
         /*Productos movimiento = list.get(posicion);
         TextView

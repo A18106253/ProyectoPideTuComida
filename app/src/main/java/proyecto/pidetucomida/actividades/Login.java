@@ -1,4 +1,4 @@
-package proyecto.pidetucomida;
+package proyecto.pidetucomida.actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import proyecto.pidetucomida.R;
 
 public class Login extends AppCompatActivity{
  EditText edtEmail,edtPass;
@@ -63,9 +65,9 @@ public class Login extends AppCompatActivity{
                if (task.isSuccessful()){
                    Toast.makeText(Login.this,"bienvenido a nuestra App.."+email,Toast.LENGTH_LONG).show();
                    if(email.equals("lopeztomaylla1299@gmail.com")){
-                      startActivity(new Intent(Login.this,RegistrarProductos.class));
+                      startActivity(new Intent(Login.this, RegistrarProductos.class));
                    }else {
-                       startActivity(new Intent(Login.this,MenuActivity.class)); //para probar nomas
+                       startActivity(new Intent(Login.this, MenuActivity.class)); //para probar nomas
                        finish();
                    }
                    edtEmail.setText(" ");
@@ -80,7 +82,7 @@ public class Login extends AppCompatActivity{
 
     public void onClick(View v) {
         if(v.getId()==R.id.btnOlvide){
-            Intent intent=new Intent(Login.this,RecuperContra.class);
+            Intent intent=new Intent(Login.this, RecuperContra.class);
             startActivity(intent);
         }else{
             Toast.makeText(getApplicationContext(),"algo falla",Toast.LENGTH_LONG).show();

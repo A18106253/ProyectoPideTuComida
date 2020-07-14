@@ -1,4 +1,4 @@
-package proyecto.pidetucomida;
+package proyecto.pidetucomida.actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +27,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import bdSQLite.SQLiteHelper;
+import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
+import proyecto.pidetucomida.R;
 
 public class RegistrarProductos extends AppCompatActivity {
     private EditText edtNombre,edtPrecio,edtDescripcion;
@@ -99,7 +100,7 @@ public class RegistrarProductos extends AppCompatActivity {
                                         );
                     Toast.makeText(getApplicationContext(), "Agregado exitosamente!", Toast.LENGTH_SHORT).show();
                     if (seleccion==1){
-                    Intent intent =new Intent(RegistrarProductos.this,MenuActivity.class);
+                    Intent intent =new Intent(RegistrarProductos.this, MenuActivity.class);
                     startActivity(intent);
 
                     } else if(seleccion==1){

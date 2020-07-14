@@ -1,4 +1,4 @@
-package proyecto.pidetucomida;
+package proyecto.pidetucomida.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import bdSQLite.SQLiteHelper;
+import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
+import proyecto.pidetucomida.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -20,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         Intent miIntent=null;
         switch (v.getId()){
             case R.id.btnSesion:
-                miIntent=new Intent(MainActivity.this,Login.class);
+                miIntent=new Intent(MainActivity.this, Login.class);
                 break;
             case R.id.btnRegistrar:
-                miIntent=new Intent(MainActivity.this,RegistrarUsuarios.class);
+                miIntent=new Intent(MainActivity.this, RegistrarUsuarios.class);
                 break;
         }
          startActivity(miIntent);

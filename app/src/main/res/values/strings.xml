@@ -22,4 +22,7 @@
     <string name="menu_bebidas">Carta de bebidas</string>
     <string name="menu_ofertas">Ofertas</string>
     <string name="menu_carrito">Compras de productos</string>
+    <string name="platos">platos</string>
+    <string name="bebidas">Bebidas</string>
+    <string name="ofertas">Ofertas</string>
 </resources>

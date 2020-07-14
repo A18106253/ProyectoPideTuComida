@@ -1,4 +1,4 @@
-package Modelo;
+package proyecto.pidetucomida.clases;
 
 public class Productos {
     private Integer id;

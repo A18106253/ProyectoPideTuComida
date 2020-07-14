@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:padding="12dp"
-    tools:context=".RegistrarUsuarios">
+    tools:context=".actividades.RegistrarUsuarios">
 
 
     <EditText

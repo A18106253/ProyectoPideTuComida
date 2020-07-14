@@ -1,4 +1,4 @@
-package proyecto.pidetucomida;
+package proyecto.pidetucomida.actividades;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import proyecto.pidetucomida.R;
 
 public class MenuActivity extends AppCompatActivity {
 

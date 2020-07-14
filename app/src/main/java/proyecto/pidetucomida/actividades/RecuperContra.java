@@ -1,4 +1,4 @@
-package proyecto.pidetucomida;
+package proyecto.pidetucomida.actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+
+import proyecto.pidetucomida.R;
 
 public class RecuperContra extends AppCompatActivity {
     EditText edtEmail;
@@ -57,7 +59,7 @@ public class RecuperContra extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-                        startActivity(new Intent(RecuperContra.this,Login.class));
+                        startActivity(new Intent(RecuperContra.this, Login.class));
                         Toast.makeText(RecuperContra.this,"Se envio un correo restablecer tu contraseña",Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(RecuperContra.this,"Nos se pudo enviar al correo",Toast.LENGTH_LONG).show();

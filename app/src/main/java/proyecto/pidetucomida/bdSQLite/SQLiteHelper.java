@@ -1,4 +1,4 @@
-package bdSQLite;
+package proyecto.pidetucomida.bdSQLite;
 
 import android.content.Context;
 import android.database.Cursor;

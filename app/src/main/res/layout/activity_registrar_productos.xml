@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:orientation="vertical"
-    tools:context=".RegistrarProductos">
+    tools:context=".actividades.RegistrarProductos">
 
     <RatingBar
         android:id="@+id/rbvaloracion"

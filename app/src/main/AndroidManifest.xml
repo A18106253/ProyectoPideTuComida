@@ -13,14 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MenuActivity"
+            android:name=".actividades.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RegistrarProductos" />
-        <activity android:name=".RecuperContra" />
-        <activity android:name=".RegistrarUsuarios" />
-        <activity android:name=".Login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".actividades.RegistrarProductos" />
+        <activity android:name=".actividades.RecuperContra" />
+        <activity android:name=".actividades.RegistrarUsuarios" />
+        <activity android:name=".actividades.Login" />
+        <activity android:name=".actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

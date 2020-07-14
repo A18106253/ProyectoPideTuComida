@@ -24,5 +24,8 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="estiloCalificacion"
+           parent="android:style/Widget.Material.RatingBar.Indicator">
+    </style>
 
 </resources>

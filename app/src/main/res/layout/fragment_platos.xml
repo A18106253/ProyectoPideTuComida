@@ -44,6 +44,7 @@
 
                 <TextView
                     android:id="@+id/edtNombre"
+                    android:id="@+id/txtapellidos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
@@ -52,7 +53,7 @@
                     android:textSize="19sp" />
 
                 <TextView
-                    android:id="@+id/edtPrecio"
+                    android:id="@+id/txtPrecio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"

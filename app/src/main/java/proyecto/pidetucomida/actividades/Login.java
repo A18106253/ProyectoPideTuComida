@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity{
         btnOlvide =(Button) findViewById(R.id.btnOlvide);
 
         progress =new ProgressDialog(this);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -33,7 +33,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         statement.bindDouble(6,(double) valoracion);
         statement.executeInsert();
     }
-    public void updateData(String nombre ,String tipo, byte[] imagen, double precio,String descripcion,float valoracion, int id) {
+    public void updateData(String nombre, String tipo, byte[] imagen,Double precio,String descripcion,float valoracion,int id) {
         SQLiteDatabase database = getWritableDatabase();
 
         String sql = "UPDATE Producto SET nombre = ?, tipo = ?, imagen = ?,precio = ?,descripcion = ?,valoracion = ? WHERE id = ?";
@@ -74,7 +74,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAntigua, int VersionNueva) {
-        db.execSQL("DROP TABLE IF EXISTS Producto");
-        onCreate(db);
+        //db.execSQL("DROP TABLE IF EXISTS Producto");
+       // onCreate(db);
     }
+
 }

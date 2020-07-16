@@ -9,7 +9,8 @@ public class Productos {
     private String descripcion;
     private float valoracion;
 
-    public Productos() {
+
+    public Productos(String nombre, double precio, byte[] imagen, String descripcion, float valoracion, int id) {
     }
 
     public Productos(Integer id, String nombre, String tipo, byte[] imagen, double precio, String descripcion, float valoracion) {
@@ -55,7 +56,7 @@ public class Productos {
     }
 
     public double getPrecio() {
-        return precio;
+        return this.precio;
     }
 
     public void setPrecio(double precio) {

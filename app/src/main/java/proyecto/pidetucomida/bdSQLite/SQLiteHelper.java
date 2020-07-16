@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
-import androidx.annotation.Nullable;
+//import androidx.annotation.Nullable;
 
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
-    public SQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public SQLiteHelper(Context context,String name,SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
     public void queryData(String sql){
@@ -74,7 +74,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAntigua, int VersionNueva) {
-        db.execSQL("DROP TABLE IF EXISTS Producto");
-        onCreate(db);
+        //db.execSQL("DROP TABLE IF EXISTS Producto");
+        //onCreate(db);
     }
 }

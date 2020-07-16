@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fondo"
+    tools:context=".ui.empresa.EmpresaFragment"
+    android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:contentPadding="10dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="NOSOTROS"
+                android:textColor="#C0392B"
+                android:textStyle="bold"
+                android:textSize="23dp"/>
+
+            <TextView
+                android:id="@+id/txtContacto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:text="Es un restaurante acogedor que posee una variedad unica de sabores exquisita donde podrá apreciar calidad y el toque diferente de sus platos para endulzar su paladar.
+                Contamos con una variedad de platos para toda ocación ya sea familiar o personal como platos a la carta,platos extras,parrillas,postres,jugos,bebidas calientes y entre otros." />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="SERVICIOS"
+                android:textColor="#C0392B"
+                android:textStyle="bold"
+                android:textSize="23dp"/>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:text="Ofrecemos un servicio mediante el cual el restaurante distribuye los platosa domicilio y los clientes hacen sus pedidosy los reciben en donde se encuentren."/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/text_empresa"
+        android:layout_width="193dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="668dp"
+        android:layout_marginEnd="128dp"
+        android:text="@string/bebidas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</LinearLayout>

@@ -30,6 +30,16 @@
         android:name="proyecto.pidetucomida.ui.carrito.CarritoFragment"
         android:label="@string/menu_carrito"
         tools:layout="@layout/fragment_carrito" />
+    <fragment
+        android:id="@+id/nav_empresa"
+        android:name="proyecto.pidetucomida.ui.empresa.EmpresaFragment"
+        android:label="@string/menu_empresa"
+        tools:layout="@layout/fragment_empresa" />
+    <fragment
+        android:id="@+id/nav_desarrolladores"
+        android:name="proyecto.pidetucomida.ui.desarrolladores.DesarrolladoresFragment"
+        android:label="@string/menu_desarrolladores"
+        tools:layout="@layout/fragment_desarrolladores" />
 
     <fragment
         android:id="@+id/nav_gallery"

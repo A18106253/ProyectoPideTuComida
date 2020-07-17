@@ -8,12 +8,23 @@
     tools:context=".actividades.ProductoLista">
 
     <GridView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="5dp"
         android:columnWidth="120dp"
         android:gravity="center"
-        android:numColumns="auto_fit" />
+        android:stretchMode="spacingWidthUniform"
+        android:horizontalSpacing="4dp"
+        android:numColumns="2"
+        android:verticalSpacing="4dp" />
+
 </RelativeLayout>

@@ -1,95 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/fondo"
     tools:context=".ui.desarrolladores.DesarrolladoresFragment">
 
-    <ImageView
-        android:id="@+id/ImaFotoo"
-        android:layout_width="176dp"
-        android:layout_height="211dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="18dp"
-        android:src="@drawable/avatar"
-        app:layout_constraintBottom_toBottomOf="@+id/txtContacto"
-        app:layout_constraintEnd_toStartOf="@+id/txtNombree"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/txtNombree"
-        android:layout_width="162dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="26dp"
-        android:text="Angel Paulino Lopez Tomaylla"
-        android:textColor="@color/colorblanco"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtOcupacion"
-        app:layout_constraintEnd_toStartOf="@+id/txtContacto"
-        app:layout_constraintStart_toEndOf="@+id/ImaFotoo"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtOcupacion"
-        android:layout_width="166dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="30dp"
-        android:text="Programador"
-        android:textColor="@color/colorblanco"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtContacto"
-        app:layout_constraintEnd_toEndOf="@+id/txtNombree"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombree" />
-
-    <TextView
-        android:id="@+id/txtContacto"
-        android:layout_width="197dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="487dp"
-        android:text="Contacto: 9451260124"
-        android:textColor="@color/colorblanco"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtNombree"
-        app:layout_constraintTop_toBottomOf="@+id/txtOcupacion" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="471dp" />
+        android:padding="10dp"
+        />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="437dp" />
+</LinearLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="630dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="186dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

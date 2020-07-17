@@ -27,8 +27,6 @@ public class AdaptadorDesarrolladores extends RecyclerView.Adapter<AdaptadorDesa
             nombre=itemView.findViewById(R.id.txtNombree);
             ocupacion=itemView.findViewById(R.id.txtOcupacion);
             contacto=itemView.findViewById(R.id.txtContacto);
-
-
         }
 
     }

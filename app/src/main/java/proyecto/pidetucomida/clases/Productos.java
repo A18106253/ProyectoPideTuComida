@@ -1,6 +1,8 @@
 package proyecto.pidetucomida.clases;
 
-public class Productos {
+import java.io.Serializable;
+
+public class Productos implements Serializable {
     private Integer id;
     private String nombre;
     private String tipo;
@@ -9,8 +11,18 @@ public class Productos {
     private String descripcion;
     private float valoracion;
 
+    public Productos(){
 
-    public Productos(String nombre, double precio, byte[] imagen, String descripcion, float valoracion, int id) {
+    }
+
+    public Productos(String nombre,  byte[] imagen,double precio, String descripcion, float valoracion, int id) {
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.valoracion = valoracion;
+        this.id = id;
+
     }
 
     public Productos(Integer id, String nombre, String tipo, byte[] imagen, double precio, String descripcion, float valoracion) {
@@ -56,7 +68,7 @@ public class Productos {
     }
 
     public double getPrecio() {
-        return this.precio;
+        return precio;
     }
 
     public void setPrecio(double precio) {

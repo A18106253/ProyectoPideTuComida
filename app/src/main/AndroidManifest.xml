@@ -3,6 +3,7 @@
     package="proyecto.pidetucomida">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -13,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".actividades.ProductoLista"></activity>
-        <activity android:name=".actividades.ListaDesarrollador"></activity>
         <activity
             android:name=".actividades.MenuActivity"
             android:label="@string/title_activity_menu"

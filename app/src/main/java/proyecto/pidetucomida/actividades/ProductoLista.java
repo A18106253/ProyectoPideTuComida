@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.Manifest;
 import android.app.Activity;
@@ -33,38 +33,65 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import proyecto.pidetucomida.R;
+import proyecto.pidetucomida.adaptadores.AdaptadorComida;
 import proyecto.pidetucomida.adaptadores.AdaptadorProductos;
+import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
 import proyecto.pidetucomida.clases.Productos;
 
 import static proyecto.pidetucomida.actividades.RegistrarProductos.imageViewToByte;
 
 public class ProductoLista extends AppCompatActivity {
     GridView gridView;
-    ArrayList<Productos> list;
-    AdaptadorProductos adapter= null;
+    ArrayList<Productos> lista;
+    AdaptadorComida adaptadorComida= null;
+
+    SQLiteHelper sqLiteHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto_lista);
         gridView =  findViewById(R.id.gridView);
-        list = new ArrayList<>();
-        adapter = new AdaptadorProductos (this, R.layout.producto_items, list);
-        gridView.setAdapter(adapter);
+        lista = new ArrayList<>();
+        adaptadorComida = new AdaptadorComida (this, R.layout.producto_items, lista);
+        gridView.setAdapter(adaptadorComida);
+    //sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio NUMERIC,descripcion VARCHAR,valoracion NUMERIC)");
+        sqLiteHelper = new SQLiteHelper(this, "bd_producto", null, 1);
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio INTEGER,descripcion VARCHAR,valoracion INTEGER)");
 
-        Cursor cursor = RegistrarProductos.sqLiteHelper.getData("SELECT * FROM Producto");
-        list.clear();
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(0);
-            String nombre = cursor.getString(1);
-            double precio = cursor.getDouble(2);
-            byte[] imagen = cursor.getBlob(3);
-            String descripcion = cursor.getString(4);
-            float valoracion =cursor.getFloat(5);
+        Cursor  cursor=null;
+        System.out.println("no pasa");
 
-            list.add(new Productos(nombre, precio,imagen,descripcion,valoracion, id));
+        try {
+        cursor = sqLiteHelper.getData("select id,nombre,imagen,precio,descripcion,valoracion from producto");
+        System.out.println("Se ejecuto ");
+        lista.clear();
+        if (cursor != null && cursor.getCount() > 0) {
+
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
+                String nombre = cursor.getString(1);
+                byte[] imagen = cursor.getBlob(2);
+                double precio = cursor.getDouble(3);
+                String descripcion = cursor.getString(4);
+                float valoracion = cursor.getFloat(5);
+                System.out.println("PRODUCTO "+imagen+nombre + " " + precio + " " + descripcion + " " + valoracion);
+                lista.add(new Productos(nombre, imagen,  precio, descripcion, valoracion, id));
+            }
+            adaptadorComida.notifyDataSetChanged();
         }
-        adapter.notifyDataSetChanged();
+            System.out.println("CONTADOR "+cursor.getCount());
+        cursor.close();
+
+        }catch (NullPointerException ignored){
+            System.out.println(ignored.getMessage());
+        }finally {
+
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
 
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -111,7 +138,7 @@ public class ProductoLista extends AppCompatActivity {
         dialog.setContentView(R.layout.actualizar_producto);
         dialog.setTitle("Update");
 
-        imagenFoto= dialog.findViewById(R.id.imagFoto);
+        imagenFoto= dialog.findViewById(R.id.fotocomida);
         final EditText edtNombre = dialog.findViewById(R.id.edtNombre);
         final Spinner cboTipo = dialog.findViewById(R.id.cboTipo);
         final EditText edtPrecio=  dialog.findViewById(R.id.edtPrecio);
@@ -191,19 +218,19 @@ public class ProductoLista extends AppCompatActivity {
 
     private void updateFoodList(){
         // get all data from sqlite
-        Cursor cursor = RegistrarProductos.sqLiteHelper.getData("SELECT * FROM Producto");
-        list.clear();
+        Cursor cursor = RegistrarProductos.sqLiteHelper.getData("select id,nombre,imagen,precio,descripcion,valoracion from producto");
+        lista.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nombre = cursor.getString(1);
-            double precio = cursor.getDouble(2);
-            byte[] imagen = cursor.getBlob(3);
+            byte[] imagen = cursor.getBlob(2);
+            double precio = cursor.getDouble(3);
             String descripcion = cursor.getString(4);
             float valoracion =cursor.getFloat(5);
 
-            list.add(new Productos(nombre, precio,imagen,descripcion,valoracion, id));
+            lista.add(new Productos(nombre, imagen,  precio,descripcion,valoracion, id));
         }
-        adapter.notifyDataSetChanged();
+        adaptadorComida.notifyDataSetChanged();
     }
 
     @Override

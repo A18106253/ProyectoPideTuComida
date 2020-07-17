@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,10 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.util.ArrayList;
+
 import proyecto.pidetucomida.R;
+import proyecto.pidetucomida.adaptadores.AdaptadorComida;
+import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
+import proyecto.pidetucomida.clases.Productos;
 
 public class PlatosFragment extends Fragment {
-
     private PlatosViewModel platosViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,

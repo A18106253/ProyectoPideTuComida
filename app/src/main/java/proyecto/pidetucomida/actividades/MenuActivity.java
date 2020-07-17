@@ -1,5 +1,6 @@
 package proyecto.pidetucomida.actividades;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -17,10 +19,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import proyecto.pidetucomida.R;
+import proyecto.pidetucomida.ui.bebidas.BebidasFragment;
+import proyecto.pidetucomida.ui.ofertas.OfertasFragment;
+import proyecto.pidetucomida.ui.platos.PlatosFragment;
 
 public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    int idcombo=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,9 @@ public class MenuActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,R.id.nav_platos,R.id.nav_bebidas, R.id.nav_ofertas,R.id.nav_carrito,R.id.nav_empresa,R.id.nav_desarrolladores,R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
@@ -39,6 +49,30 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        Bundle seleccioncombo=getIntent().getExtras();
+        if(seleccioncombo != null) {
+            idcombo =Integer.parseInt( seleccioncombo.getString("seleccion"));
+        }
+
+        if (idcombo==1){
+            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            tx.replace(R.id.nav_platos, new PlatosFragment());
+            tx.commit();
+
+        }else if(idcombo==2){
+            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            tx.replace(R.id.nav_bebidas, new BebidasFragment());
+            tx.commit();
+
+        }else if(idcombo==3){
+            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            tx.replace(R.id.nav_ofertas, new OfertasFragment());
+            tx.commit();
+
+        }
+
     }
 
     @Override

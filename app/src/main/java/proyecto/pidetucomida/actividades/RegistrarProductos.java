@@ -35,7 +35,7 @@ public class RegistrarProductos extends AppCompatActivity {
     private Spinner cboTipo;
     private ImageView Foto;
     private RatingBar rbvaloracion;
-    private Button btnRegistrar,btnAgregar;
+    private Button btnRegistrar,btnAgregar,btnSiguiente;
 
     final int REQUEST_CODE_GALLERY = 999;
     public static SQLiteHelper sqLiteHelper;
@@ -55,18 +55,9 @@ public class RegistrarProductos extends AppCompatActivity {
         btnAgregar= findViewById(R.id.btnAgregar);
         btnRegistrar=  findViewById(R.id.btnRegistrar);
         btnSiguiente = findViewById(R.id.btnSiguiente);
-        edtNombre = findViewById(R.id.edtNombre);
-        cboTipo =findViewById(R.id.cboTipo);
-        Foto = findViewById(R.id.Foto);
-        edtPrecio =findViewById(R.id.edtPrecio);
-        edtDescripcion = findViewById(R.id.edtDescripcion);
-        rbvaloracion =findViewById(R.id.rbvaloracion);
-        btnAgregar=  findViewById(R.id.btnAgregar);
-        btnRegistrar=  findViewById(R.id.btnRegistrar);
-        btnSiguiente=  findViewById(R.id.btnSiguiente);
 
         sqLiteHelper = new SQLiteHelper(this, "bd_producto", null, 1);
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio DECIMAL(6,2),descripcion VARCHAR,valoracion FLOAT)");
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio INTEGER,descripcion VARCHAR,valoracion INTEGER)");
 
         ArrayList<String> ComboOpciones = new ArrayList<String>();
         ComboOpciones.add("SELECCIONE");
@@ -104,20 +95,17 @@ public class RegistrarProductos extends AppCompatActivity {
                             edtNombre.getText().toString().trim(),
                             cboTipo.getSelectedItem().toString(),
                             imageViewToByte(Foto),
-                            Double.valueOf(edtPrecio.getText().toString().trim()),
+                            Double.parseDouble((edtPrecio.getText().toString().trim())),
                             edtDescripcion.getText().toString().trim(),
                             rbvaloracion.getRating()
                                         );
                     Toast.makeText(getApplicationContext(), "Agregado exitosamente!", Toast.LENGTH_SHORT).show();
-                    if (seleccion==1){
+
                     Intent intent =new Intent(RegistrarProductos.this, MenuActivity.class);
+                    intent.putExtra("seleccion",seleccion);
                     startActivity(intent);
 
-                    } else if(seleccion==1){
-                        Intent intent =new Intent(RegistrarProductos.this,MenuActivity.class);
-                        startActivity(intent);
 
-                    }
                     edtNombre.setText(" ");
                     edtPrecio.setText(" ");
                     Foto.setImageResource(R.mipmap.ic_launcher);

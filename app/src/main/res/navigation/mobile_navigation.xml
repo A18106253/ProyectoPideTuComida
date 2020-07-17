@@ -9,7 +9,8 @@
         android:id="@+id/nav_home"
         android:name="proyecto.pidetucomida.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+    </fragment>
     <fragment
         android:id="@+id/nav_platos"
         android:name="proyecto.pidetucomida.ui.platos.PlatosFragment"
@@ -40,6 +41,12 @@
         android:name="proyecto.pidetucomida.ui.desarrolladores.DesarrolladoresFragment"
         android:label="@string/menu_desarrolladores"
         tools:layout="@layout/fragment_desarrolladores" />
+
+    <fragment
+        android:id="@+id/nav_maps"
+        android:name="proyecto.pidetucomida.ui.maps.MapaFragment"
+        android:label="@string/menu_mapa"
+        tools:layout="@layout/fragment_mapa" />
 
     <fragment
         android:id="@+id/nav_gallery"

@@ -33,6 +33,10 @@
             android:icon="@drawable/desarrollador"
             android:title="@string/menu_desarrolladores" />
         <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ubicacion"
+            android:title="@string/menu_ubicacion" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />

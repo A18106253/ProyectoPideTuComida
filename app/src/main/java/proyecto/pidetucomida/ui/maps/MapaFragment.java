@@ -23,9 +23,18 @@ public class MapaFragment extends Fragment{
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            LatLng Lima = new LatLng(-12.0459497, -77.0307403);
+            LatLng Miraflores = new LatLng(-12.117809, -77.0333792);
+            LatLng Lince = new LatLng(-12.0808434, -77.0360061);
+            LatLng Surco = new LatLng(-12.1045325, -76.985273);
+            LatLng SantaAnita = new LatLng(-12.0491787, -76.9747201);
+            googleMap.addMarker(new MarkerOptions().position(Lima).title("Lima-Peru"));
+            googleMap.addMarker(new MarkerOptions().position(Miraflores).title("Miraflores"));
+            googleMap.addMarker(new MarkerOptions().position(Lince).title("Lince"));
+            googleMap.addMarker(new MarkerOptions().position(Surco).title("Surco"));
+            googleMap.addMarker(new MarkerOptions().position(SantaAnita).title("Santa Anita"));
+          //  googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Lima,13));
         }
     };
 

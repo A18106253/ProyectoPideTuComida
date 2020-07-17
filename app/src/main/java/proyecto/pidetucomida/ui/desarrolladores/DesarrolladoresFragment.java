@@ -50,8 +50,8 @@ public class DesarrolladoresFragment extends Fragment {
     public List<Desarrolladores>obtenerDesarrollador() {
         List<Desarrolladores> desarrollador=new ArrayList<>();
         desarrollador.add(new Desarrolladores(1,R.drawable.chica,"Adela Quispe Bolivar","Diseñadora","941250475"));
-        desarrollador.add(new Desarrolladores(2,R.drawable.fot,"Angel Paulino Lopez Tomaylla","Programador","9485240012"));
-        desarrollador.add(new Desarrolladores(3,R.drawable.fo,"Delman Bustinza Portillo","Vendedor","945102345"));
+        desarrollador.add(new Desarrolladores(2,R.drawable.angel,"Angel Paulino Lopez Tomaylla","Programador","9485240012"));
+        desarrollador.add(new Desarrolladores(3,R.drawable.delman,"Delman Bustinza Portillo","Programador","945102345"));
         return desarrollador;
 
     }

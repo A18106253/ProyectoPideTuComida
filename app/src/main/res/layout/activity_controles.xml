@@ -8,16 +8,17 @@
     tools:context=".actividades.Controles">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnBuscar"
         android:layout_width="344dp"
         android:layout_height="63dp"
         android:text="Eliminar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="503dp" />
+        tools:layout_editor_absoluteY="511dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnActualizar"
         android:layout_width="342dp"
         android:layout_height="59dp"
         android:text="Actualizar"
@@ -25,7 +26,7 @@
         tools:layout_editor_absoluteY="592dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnListar"
         android:layout_width="335dp"
         android:layout_height="66dp"
         android:text="Listar"

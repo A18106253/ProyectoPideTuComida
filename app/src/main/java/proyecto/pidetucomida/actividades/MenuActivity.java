@@ -1,9 +1,11 @@
 package proyecto.pidetucomida.actividades;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -28,7 +30,8 @@ public class MenuActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
 
     int idcombo=0;
-
+    String email="";
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,44 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+
+
+
+
+
+
+
+        Bundle recibidemail=getIntent().getExtras();
+        if (recibidemail !=null){
+            email=recibidemail.getString("email");
+            if(!email.equals("lopeztomaylla1299@gmail.com")){
+
+                fab.setVisibility(View.INVISIBLE);
+
+                // fab.setVisibility(View.VISIBLE);
+            }
+
+        }
+
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent =new Intent(MenuActivity.this,RegistrarProductos.class);
+                startActivity(intent);
+                /*
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                 */
+            }
+        });
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,R.id.nav_platos,R.id.nav_bebidas, R.id.nav_ofertas,R.id.nav_carrito,R.id.nav_empresa,R.id.nav_desarrolladores,R.id.nav_maps,R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
@@ -51,10 +92,16 @@ public class MenuActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
+        /*
         Bundle seleccioncombo=getIntent().getExtras();
         if(seleccioncombo != null) {
             idcombo =Integer.parseInt( seleccioncombo.getString("seleccion"));
         }
+
+*/
+
+
+        Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombo, Toast.LENGTH_SHORT).show();
 
         if (idcombo==1){
             FragmentTransaction tx = getSupportFragmentManager().beginTransaction();

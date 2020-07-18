@@ -1,5 +1,6 @@
 package proyecto.pidetucomida.ui.platos;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +24,63 @@ import proyecto.pidetucomida.clases.Productos;
 public class PlatosFragment extends Fragment {
     private PlatosViewModel platosViewModel;
 
+    GridView gridView;
+    ArrayList<Productos> lista;
+    AdaptadorComida adaptadorComida= null;
+
+    SQLiteHelper sqLiteHelper;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         platosViewModel =
                 ViewModelProviders.of(this).get(PlatosViewModel.class);
         View root = inflater.inflate(R.layout.fragment_platos, container, false);
+
+
+
+        gridView =  root.findViewById(R.id.gridplatos);
+        lista = new ArrayList<>();
+        adaptadorComida = new AdaptadorComida (getContext(), R.layout.producto_items, lista);
+        gridView.setAdapter(adaptadorComida);
+        //sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio NUMERIC,descripcion VARCHAR,valoracion NUMERIC)");
+        sqLiteHelper = new SQLiteHelper(getContext(), "bd_producto", null, 1);
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio INTEGER,descripcion VARCHAR,valoracion INTEGER)");
+
+        Cursor cursor=null;
+        System.out.println("no pasa");
+
+        try {
+            cursor = sqLiteHelper.getData("select id,nombre,imagen,precio,descripcion,valoracion from producto");
+            System.out.println("Se ejecuto ");
+            lista.clear();
+            if (cursor != null && cursor.getCount() > 0) {
+
+                while (cursor.moveToNext()) {
+                    int id = cursor.getInt(0);
+                    String nombre = cursor.getString(1);
+                    byte[] imagen = cursor.getBlob(2);
+                    double precio = cursor.getDouble(3);
+                    String descripcion = cursor.getString(4);
+                    float valoracion = cursor.getFloat(5);
+                    System.out.println("PRODUCTO "+imagen+nombre + " " + precio + " " + descripcion + " " + valoracion);
+                    lista.add(new Productos(nombre, imagen,  precio, descripcion, valoracion, id));
+                }
+                adaptadorComida.notifyDataSetChanged();
+            }
+            System.out.println("CONTADOR "+cursor.getCount());
+            cursor.close();
+
+        }catch (NullPointerException ignored){
+            System.out.println(ignored.getMessage());
+        }finally {
+
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+
+        /*
         final TextView textView = root.findViewById(R.id.text_platos);
         platosViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -35,6 +88,34 @@ public class PlatosFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+
+        */
+
+
+
+
+
         return root;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

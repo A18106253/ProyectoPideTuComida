@@ -65,12 +65,14 @@ public class Login extends AppCompatActivity{
 
                if (task.isSuccessful()){
                    Toast.makeText(Login.this,"bienvenido a nuestra App.."+email,Toast.LENGTH_LONG).show();
-                   if(email.equals("lopeztomaylla1299@gmail.com")){
-                      startActivity(new Intent(Login.this, RegistrarProductos.class));
-                   }else {
+                 //  if(email.equals("lopeztomaylla1299@gmail.com")){
+                  Intent intent= new Intent(Login.this, MenuActivity.class);
+                       intent.putExtra("email",email);
+                       startActivity(intent);
+                   /*}else {
                        startActivity(new Intent(Login.this, MenuActivity.class)); //para probar nomas
-                       finish();
-                   }
+                       finish();  }*/
+
                    edtEmail.setText(" ");
                    edtPass.setText(" ");
                } else{

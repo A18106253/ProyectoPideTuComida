@@ -26,6 +26,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
 import proyecto.pidetucomida.R;
@@ -100,17 +102,17 @@ public class RegistrarProductos extends AppCompatActivity {
                             rbvaloracion.getRating()
                                         );
                     Toast.makeText(getApplicationContext(), "Agregado exitosamente!", Toast.LENGTH_SHORT).show();
-
-                    Intent intent =new Intent(RegistrarProductos.this, MenuActivity.class);
-                    intent.putExtra("seleccion",seleccion);
-                    startActivity(intent);
-
-
                     edtNombre.setText(" ");
                     edtPrecio.setText(" ");
                     Foto.setImageResource(R.mipmap.ic_launcher);
                     edtDescripcion.setText("");
                     rbvaloracion.setRating(0);
+
+                    TimeUnit.SECONDS.sleep(10);
+                    Intent intent =new Intent(RegistrarProductos.this, MenuActivity.class);
+                    intent.putExtra("seleccion",seleccion);
+                    startActivity(intent);
+
 
                 }
                 catch (Exception e){

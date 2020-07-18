@@ -22,13 +22,15 @@ public class EmpresaFragment extends Fragment {
         empresaViewModel=
                 ViewModelProviders.of(this).get(EmpresaViewModel.class);
         View root = inflater.inflate(R.layout.fragment_empresa, container, false);
-        final TextView textView = root.findViewById(R.id.text_empresa);
+
+        /** final TextView textView = root.findViewById(R.id.text_empresa);
         empresaViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+         */
         return root;
     }
 }

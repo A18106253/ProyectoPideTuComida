@@ -20,7 +20,7 @@ import proyecto.pidetucomida.R;
 
 public class MapaFragment extends Fragment{
 
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
+    private OnMapReadyCallback callback = new OnMapReadyCallback(){
         @Override
         public void onMapReady(GoogleMap googleMap) {
             LatLng Lima = new LatLng(-12.0459497, -77.0307403);

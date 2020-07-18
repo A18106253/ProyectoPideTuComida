@@ -88,15 +88,12 @@ public class PlatosFragment extends Fragment {
                 textView.setText(s);
             }
         });
-
-
         */
-
-
-
-
-
         return root;
+
+
+
+
     }
 
 

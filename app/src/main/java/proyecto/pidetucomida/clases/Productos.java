@@ -15,7 +15,7 @@ public class Productos implements Serializable {
 
     }
 
-    public Productos(String nombre,  byte[] imagen,double precio, String descripcion, float valoracion, int id) {
+   public Productos(String nombre, byte[] imagen,double precio, String descripcion, float valoracion, int id) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
@@ -25,14 +25,14 @@ public class Productos implements Serializable {
 
     }
 
-    public Productos(Integer id, String nombre, String tipo, byte[] imagen, double precio, String descripcion, float valoracion) {
-        this.id = id;
+    public Productos(String nombre, String tipo, byte[] imagen, double precio, String descripcion, float valoracion,int id) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.imagen = imagen;
         this.precio = precio;
         this.descripcion = descripcion;
         this.valoracion = valoracion;
+        this.id = id;
     }
 
     public Integer getId() {

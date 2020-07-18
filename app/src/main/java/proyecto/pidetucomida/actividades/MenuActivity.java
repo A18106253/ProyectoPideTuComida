@@ -57,7 +57,6 @@ public class MenuActivity extends AppCompatActivity {
         if (recibidemail !=null){
             email=recibidemail.getString("email");
             if(!email.equals("lopeztomaylla1299@gmail.com")){
-
                 fab.setVisibility(View.INVISIBLE);
 
                 // fab.setVisibility(View.VISIBLE);

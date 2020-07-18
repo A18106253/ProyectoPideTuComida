@@ -26,7 +26,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
@@ -48,10 +47,10 @@ public class RegistrarProductos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_productos);
-        edtNombre =  findViewById(R.id.edtNombre);
-        cboTipo = findViewById(R.id.cboTipo);
+        edtNombre =  findViewById(R.id.edtNombres);
+        cboTipo = findViewById(R.id.spnTipo);
         Foto =  findViewById(R.id.Foto);
-        edtPrecio = findViewById(R.id.edtPrecio);
+        edtPrecio = findViewById(R.id.edtPrecios);
         edtDescripcion = findViewById(R.id.edtDescripcion);
         rbvaloracion = findViewById(R.id.rbvaloracion);
         btnAgregar= findViewById(R.id.btnAgregar);

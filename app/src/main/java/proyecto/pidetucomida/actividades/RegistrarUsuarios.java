@@ -37,7 +37,7 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance().getReference();
 
-        edtNombre=(EditText) findViewById(R.id.edtNombre);
+        edtNombre=(EditText) findViewById(R.id.edtNombres);
         edtApellido=(EditText) findViewById(R.id.edtApellido);
         edtEmail=(EditText) findViewById(R.id.edtEmail);
         edtPass=(EditText) findViewById(R.id.edtPass);

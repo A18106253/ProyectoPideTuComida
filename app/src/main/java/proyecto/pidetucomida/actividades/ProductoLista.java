@@ -18,8 +18,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -34,11 +32,8 @@ import java.util.ArrayList;
 
 import proyecto.pidetucomida.R;
 import proyecto.pidetucomida.adaptadores.AdaptadorComida;
-import proyecto.pidetucomida.adaptadores.AdaptadorProductos;
 import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
 import proyecto.pidetucomida.clases.Productos;
-
-import static proyecto.pidetucomida.actividades.RegistrarProductos.imageViewToByte;
 
 public class ProductoLista extends AppCompatActivity {
     GridView gridView;
@@ -93,58 +88,55 @@ public class ProductoLista extends AppCompatActivity {
         }
 
 
-        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view,final int position, long l) {
-                CharSequence[] items = {"Update", "Delete"};
-                AlertDialog.Builder dialog = new AlertDialog.Builder(ProductoLista.this);
+        gridView.setOnItemLongClickListener((adapterView, view, position, l) -> {
+            CharSequence[] items = {"Update", "Delete"};
+            AlertDialog.Builder dialog = new AlertDialog.Builder(ProductoLista.this);
 
 
-                dialog.setItems(items, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int item) {
-                        if (item == 0) {
-                            // update
-                            Cursor c = RegistrarProductos.sqLiteHelper.getData("SELECT id FROM Producto");
-                            ArrayList<Integer> arrID = new ArrayList<>();
-                            while (c.moveToNext()){
-                                arrID.add(c.getInt(0));
-                            }
-                            // show dialog update at here
-                            showDialogUpdate(ProductoLista.this, arrID.get(position));
-                        } else {
-                            // delete
-                            Cursor c = RegistrarProductos.sqLiteHelper.getData("SELECT id FROM Producto");
-                            ArrayList<Integer> arrID = new ArrayList<>();
-                            while (c.moveToNext()){
-                                arrID.add(c.getInt(0));
-                            }
-                            showDialogDelete(arrID.get(position));
-                        }
-
+            dialog.setItems(items, (dialogInterface, item) -> {
+                if (item == 0) {
+                    // update
+                    Cursor c = RegistrarProductos.sqLiteHelper.getData("SELECT id FROM Producto");
+                    ArrayList<Integer> arrID = new ArrayList<>();
+                    while (c.moveToNext()){
+                        arrID.add(c.getInt(0));
                     }
-                });
-                dialog.show();
-                return true;
-            }
+                    // show dialog update at here
+                    System.out.println("NO PASO");
+                    showDialogUpdate(ProductoLista.this, arrID.get(position));
+                } else {
+                    // delete
+                    Cursor c = RegistrarProductos.sqLiteHelper.getData("SELECT id FROM Producto");
+                    ArrayList<Integer> arrID = new ArrayList<>();
+                    while (c.moveToNext()){
+                        arrID.add(c.getInt(0));
+                    }
+                    showDialogDelete(arrID.get(position));
+                }
+
+            });
+            dialog.show();
+            return true;
         });
     }
 
 
     ImageView imagenFoto;
-    private void showDialogUpdate(Activity activity, final int position){
+    private void showDialogUpdate(Activity activity,final int position){
 
         final Dialog dialog = new Dialog(activity);
-        dialog.setContentView(R.layout.actualizar_producto);
+        System.out.println("NO PASO");
+        dialog.setContentView(R.layout.actualizar_productos);
         dialog.setTitle("Update");
+        System.out.println("PASO");
 
-        imagenFoto= dialog.findViewById(R.id.fotocomida);
-        final EditText edtNombre = dialog.findViewById(R.id.edtNombre);
-        final Spinner cboTipo = dialog.findViewById(R.id.cboTipo);
-        final EditText edtPrecio=  dialog.findViewById(R.id.edtPrecio);
-        final EditText edtDescripcion =  dialog.findViewById(R.id.edtDescripcion);
-        final RatingBar rtbValoracion =  dialog.findViewById(R.id.rtbValoracion);
-        Button btnActualizar = dialog.findViewById(R.id.btnActualizar);
+        imagenFoto= dialog.findViewById(R.id.imgFoto);
+        final EditText Nombre = dialog.findViewById(R.id.edtNombres);
+        final Spinner  Tipo = dialog.findViewById(R.id.spnTipo);
+        final EditText  Precio=  dialog.findViewById(R.id.edtPrecios);
+        final EditText  Descripcion =  dialog.findViewById(R.id.edtComentario);
+        final RatingBar Valoracion =  dialog.findViewById(R.id.rtbEstrellitas);
+        Button btnActualizar = dialog.findViewById(R.id.btnUpdate);
 
         // set width for dialog
         int width = (int) (activity.getResources().getDisplayMetrics().widthPixels * 0.95);
@@ -153,47 +145,40 @@ public class ProductoLista extends AppCompatActivity {
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
-        imagenFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // request photo library
-                ActivityCompat.requestPermissions(
-                        ProductoLista.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        888
-                );
-            }
+        imagenFoto.setOnClickListener(v -> {
+            // request photo library
+            ActivityCompat.requestPermissions(
+                    ProductoLista.this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    888
+            );
         });
-        btnActualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    RegistrarProductos.sqLiteHelper.updateData(
-                             edtNombre.getText().toString().trim(),
-                            cboTipo.getSelectedItem().toString(),
-                            imageViewToByte(imagenFoto),
-                            Double.parseDouble(edtPrecio.getText().toString().trim()),
-                            edtDescripcion.getText().toString().trim(),
-                            rtbValoracion.getRating(),
-                            position
-                    );
-                    dialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "  Se Actualizo correctamente!!!",Toast.LENGTH_SHORT).show();
-
-                }
-                catch (Exception error) {
-                    Log.e("error al Actualizar", error.getMessage());
-                }
-                updateFoodList();
+        btnActualizar.setOnClickListener(v -> {
+            try {
+                RegistrarProductos.sqLiteHelper.updateData(
+                        Nombre.getText().toString().trim(),
+                        Tipo.getSelectedItem().toString(),
+                        RegistrarProductos.imageViewToByte(imagenFoto),
+                        Double.parseDouble(Precio.getText().toString().trim()),
+                        Descripcion.getText().toString().trim(),
+                        Valoracion.getRating(),
+                        position
+                );
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), " Se Actualizo correctamente!!!",Toast.LENGTH_SHORT).show();
             }
+            catch (Exception error) {
+                Log.e("error al Actualizar", error.getMessage());
+            }
+            updateFoodList();
         });
     }
 
     private void showDialogDelete(final int idProducto){
         final AlertDialog.Builder dialogDelete = new AlertDialog.Builder(ProductoLista.this);
 
-        dialogDelete.setTitle("Warning!!");
-        dialogDelete.setMessage("Are you sure you want to this delete?");
+        dialogDelete.setTitle("Advertencia!!");
+        dialogDelete.setMessage("¿Estas de acuerdo con eliminar este producto?");
         dialogDelete.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -218,17 +203,19 @@ public class ProductoLista extends AppCompatActivity {
 
     private void updateFoodList(){
         // get all data from sqlite
-        Cursor cursor = RegistrarProductos.sqLiteHelper.getData("select id,nombre,imagen,precio,descripcion,valoracion from producto");
+        //Cursor cursor = RegistrarProductos.sqLiteHelper.getData("select id,nombre,imagen,precio,descripcion,valoracion from producto");
+        Cursor cursor = RegistrarProductos.sqLiteHelper.getData("select * from producto");
         lista.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nombre = cursor.getString(1);
-            byte[] imagen = cursor.getBlob(2);
-            double precio = cursor.getDouble(3);
-            String descripcion = cursor.getString(4);
-            float valoracion =cursor.getFloat(5);
+            String tipo = cursor.getString(2);
+            byte[] imagen = cursor.getBlob(3);
+            double precio = cursor.getDouble(4);
+            String descripcion = cursor.getString(5);
+            float valoracion =cursor.getFloat(6);
 
-            lista.add(new Productos(nombre, imagen,  precio,descripcion,valoracion, id));
+            lista.add(new Productos(nombre,tipo,imagen,precio,descripcion,valoracion,id));
         }
         adaptadorComida.notifyDataSetChanged();
     }
@@ -243,7 +230,7 @@ public class ProductoLista extends AppCompatActivity {
                 startActivityForResult(intent, 888);
             }
             else {
-                Toast.makeText(getApplicationContext(), "You don't have permission to access file location!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "No tienes permiso para acceder a la ubicación del archivo!!!", Toast.LENGTH_SHORT).show();
             }
             return;
         }

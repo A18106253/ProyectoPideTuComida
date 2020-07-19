@@ -106,6 +106,7 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
                                 public void onComplete(@NonNull Task<Void> task2) {
                                     if (task2.isSuccessful()){
                                         Intent intent = new Intent(RegistrarUsuarios.this, MenuActivity.class);
+                                        intent.putExtra("email",email);
                                         startActivity(intent); //solo por la prueba
                                         finish();
                                     }

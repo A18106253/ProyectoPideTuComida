@@ -11,6 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -29,8 +30,9 @@ public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    int idcombo=0;
+    String idcombo="";
     String email="";
+    String correo = "";
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,23 +49,13 @@ public class MenuActivity extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
 
-
-
-
-
-
-
-        Bundle recibidemail=getIntent().getExtras();
-        if (recibidemail !=null){
-            email=recibidemail.getString("email");
-            if(!email.equals("lopeztomaylla1299@gmail.com")){
+        Bundle extras = getIntent().getExtras();
+        if (extras!=null){
+            correo = extras.getString("email");
+            if (!correo.equals("lopeztomaylla1299@gmail.com")) {
                 fab.setVisibility(View.INVISIBLE);
-
-                // fab.setVisibility(View.VISIBLE);
             }
-
         }
-
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +64,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
                 Intent intent =new Intent(MenuActivity.this,RegistrarProductos.class);
+                intent.putExtra("email", correo);
                 startActivity(intent);
                 /*
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -91,33 +84,49 @@ public class MenuActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        /*
-        Bundle seleccioncombo=getIntent().getExtras();
-        if(seleccioncombo != null) {
-            idcombo =Integer.parseInt( seleccioncombo.getString("seleccion"));
-        }
 
-*/
+      //  Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombo, Toast.LENGTH_SHORT).show();
 
+        Intent idcombito = getIntent();
+        String verificaridcombo = idcombito.getStringExtra("seleccion");
 
-        Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombo, Toast.LENGTH_SHORT).show();
+        boolean mifragement=false;
+        if (verificaridcombo!= null && idcombito.equals("1")){
+            Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombito, Toast.LENGTH_SHORT).show();
 
-        if (idcombo==1){
             FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
             tx.replace(R.id.nav_platos, new PlatosFragment());
+            mifragement=true;
             tx.commit();
+            drawer.closeDrawer(GravityCompat.START);
+            //return ;
 
-        }else if(idcombo==2){
+        }else if(verificaridcombo!= null && idcombo.equals("2")){
+            Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombito, Toast.LENGTH_SHORT).show();
+
             FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
             tx.replace(R.id.nav_bebidas, new BebidasFragment());
-            tx.commit();
+            mifragement=true;
 
-        }else if(idcombo==3){
-            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-            tx.replace(R.id.nav_ofertas, new OfertasFragment());
             tx.commit();
+            drawer.closeDrawer(GravityCompat.START);
+
+
+
+        }else if(verificaridcombo!= null && idcombo.equals("3")){
+            Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombito, Toast.LENGTH_SHORT).show();
+
+            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            tx.add(R.id.nav_ofertas, new OfertasFragment());
+            mifragement=true;
+
+            tx.commit();
+           // drawer.closeDrawer(GravityCompat.START);
 
         }
+
+
+
 
     }
 

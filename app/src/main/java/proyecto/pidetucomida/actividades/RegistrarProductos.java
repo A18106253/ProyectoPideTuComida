@@ -42,7 +42,7 @@ public class RegistrarProductos extends AppCompatActivity {
     public static SQLiteHelper sqLiteHelper;
 
     int seleccion=0;
-
+    String correo="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +65,12 @@ public class RegistrarProductos extends AppCompatActivity {
         ComboOpciones.add("COMIDAS");
         ComboOpciones.add("BEBIDAS");
         ComboOpciones.add("OFERTAS");
+
+        Bundle extras = getIntent().getExtras();
+        if (extras!=null){
+            correo = extras.getString("email");
+        }
+
         ArrayAdapter<CharSequence>adapter = new ArrayAdapter(
                 this,R.layout.support_simple_spinner_dropdown_item,ComboOpciones);
         cboTipo.setAdapter(adapter);
@@ -107,11 +113,12 @@ public class RegistrarProductos extends AppCompatActivity {
                     edtDescripcion.setText("");
                     rbvaloracion.setRating(0);
 
-                    TimeUnit.SECONDS.sleep(10);
+                   // TimeUnit.SECONDS.sleep(10);
+                    Toast.makeText(getApplicationContext(), "COMBO ID!"+seleccion, Toast.LENGTH_SHORT).show();
                     Intent intent =new Intent(RegistrarProductos.this, MenuActivity.class);
-                    intent.putExtra("seleccion",seleccion);
+                    intent.putExtra("seleccion", String.valueOf(seleccion));
+                    intent.putExtra("email", correo);
                     startActivity(intent);
-
 
                 }
                 catch (Exception e){

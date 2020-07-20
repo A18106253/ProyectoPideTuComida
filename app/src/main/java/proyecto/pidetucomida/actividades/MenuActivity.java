@@ -25,18 +25,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import proyecto.pidetucomida.Interfaces.ComunicaFragments;
 import proyecto.pidetucomida.R;
+import proyecto.pidetucomida.clases.Productos;
 import proyecto.pidetucomida.ui.bebidas.BebidasFragment;
+import proyecto.pidetucomida.ui.detalles.DetalleProductoFragment;
 import proyecto.pidetucomida.ui.ofertas.OfertasFragment;
 import proyecto.pidetucomida.ui.platos.PlatosFragment;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements ComunicaFragments {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     String idcombo="";
     String email="";
     String correo = "";
+    DetalleProductoFragment detalleProductoFragment;
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,5 +170,26 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void Emviarproducto(Productos producto) {
+        //gracias a hbaer implementado de la interface "ComunicaFragments" se tiene la implementacion del metodo enviarPersona
+        //o mejor dicho este metodo.
+        //Aqui se realiza toda la logica necesaria para poder realizar el envio
+        detalleProductoFragment = new DetalleProductoFragment();
+        //objeto bundle para transportar la informacion
+        Bundle bundleEnvio = new Bundle();
+        //se manda el objeto que le esta llegando:
+        bundleEnvio.putSerializable("objeto",producto);
+        detalleProductoFragment.setArguments(bundleEnvio);
+
+        //CArgar fragment en el activity
+        FragmentManager fragment = getSupportFragmentManager();
+        FragmentTransaction fra = fragment.beginTransaction();
+        fra.replace(R.id.nav_host_fragment, detalleProductoFragment);
+        fra.addToBackStack(null);
+        fra.commit();
+
     }
 }

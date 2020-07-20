@@ -73,8 +73,9 @@
 
             <Button
                 android:id="@+id/btnUpdate"
-                android:layout_width="411dp"
-                android:layout_height="wrap_content"
+                android:layout_width="337dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center"
                 android:background="@drawable/botones"
                 android:text="Actualizar" />
 

@@ -59,14 +59,4 @@
     </androidx.cardview.widget.CardView>
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/text_empresa"
-        android:layout_width="193dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="668dp"
-        android:layout_marginEnd="128dp"
-        android:text="@string/bebidas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </LinearLayout>

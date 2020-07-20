@@ -130,6 +130,7 @@ public class RegistrarUsuarios extends AppCompatActivity implements View.OnClick
         edtPass.setText(" ");
         edtDireccion.setText(" ");
         edtTelefono.setText(" ");
+        edtNombre.findFocus();
     }
 
     @Override

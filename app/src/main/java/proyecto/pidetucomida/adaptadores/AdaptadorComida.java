@@ -17,11 +17,13 @@ import java.util.ArrayList;
 import proyecto.pidetucomida.R;
 import proyecto.pidetucomida.clases.Productos;
 
-public class AdaptadorComida extends BaseAdapter {
+public class AdaptadorComida extends BaseAdapter{
 
     private Context context;
     private int layout;
     private ArrayList<Productos> listacomida;
+
+    //creamos el onclick
 
     public AdaptadorComida(Context context, int layout, ArrayList<Productos> listacomida) {
         this.context = context;
@@ -74,7 +76,7 @@ public class AdaptadorComida extends BaseAdapter {
 
         Productos comida = listacomida.get(position);
         RatingBar simpleRatingBar = (RatingBar) row.findViewById(R.id.RTValoracion); // initiate a rating bar
-        simpleRatingBar.setBackgroundColor(Color.YELLOW); // set background color for a rating bar
+        simpleRatingBar.setProgress(Color.YELLOW); // set background color for a rating bar
         holder.nombrecomida.setText(comida.getNombre());
         holder.preciocomida.setText(String.valueOf(comida.getPrecio()));
         holder.descripcioncomida.setText(comida.getDescripcion());

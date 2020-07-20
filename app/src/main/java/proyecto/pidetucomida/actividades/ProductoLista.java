@@ -53,7 +53,7 @@ public class ProductoLista extends AppCompatActivity {
         setContentView(R.layout.activity_producto_lista);
         gridView =  findViewById(R.id.gridView);
         lista = new ArrayList<>();
-        adaptadorComida = new AdaptadorComida (this, R.layout.producto_items, lista);
+        adaptadorComida = new AdaptadorComida (this, R.layout.producto_item, lista);
         gridView.setAdapter(adaptadorComida);
 
 

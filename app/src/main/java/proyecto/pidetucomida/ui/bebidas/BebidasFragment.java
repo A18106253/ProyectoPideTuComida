@@ -1,12 +1,16 @@
 package proyecto.pidetucomida.ui.bebidas;
 
+import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import java.util.ArrayList;
 
+import proyecto.pidetucomida.Interfaces.ComunicaFragments;
 import proyecto.pidetucomida.R;
 import proyecto.pidetucomida.adaptadores.AdaptadorComida;
 import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
@@ -30,6 +35,10 @@ public class BebidasFragment extends Fragment{
 
     SQLiteHelper sqLiteHelper;
 
+    //Crear referencias para poder realizar la comunicacion entre el fragment detalle
+    Activity actividad;
+    proyecto.pidetucomida.Interfaces.ComunicaFragments ComunicaFragments;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         bebidasViewModel =
@@ -38,7 +47,7 @@ public class BebidasFragment extends Fragment{
 
         gridView =  root.findViewById(R.id.gridbebidas);
         lista = new ArrayList<>();
-        adaptadorComida = new AdaptadorComida (getContext(), R.layout.producto_items, lista);
+        adaptadorComida = new AdaptadorComida (getContext(), R.layout.producto_item, lista);
         gridView.setAdapter(adaptadorComida);
 
         sqLiteHelper = new SQLiteHelper(getContext(), "bd_producto", null, 1);
@@ -76,6 +85,18 @@ public class BebidasFragment extends Fragment{
                 cursor.close();
             }
         }
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String nombre = lista.get(position).getNombre();
+                Toast.makeText(getContext(), "Seleccionó: "+lista.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+                //enviar mediante la interface el objeto seleccionado al detalle
+                //se envia el objeto completo
+                //se utiliza la interface como puente para enviar el objeto seleccionado
+                ComunicaFragments.Emviarproducto(lista.get(position));
+                //luego en el mainactivity se hace la implementacion de la interface para implementar el metodo enviarpersona
+            }
+        });
         /**final TextView textView = root.findViewById(R.id.text_bebidas);
 
         bebidasViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -86,5 +107,24 @@ public class BebidasFragment extends Fragment{
         });
          */
         return root;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        //esto es necesario para establecer la comunicacion entre la lista y el detalle
+        //si el contexto que le esta llegando es una instancia de un activity:
+        if(context instanceof Activity){
+            //voy a decirle a mi actividad que sea igual a dicho contesto. castin correspondiente:
+            this.actividad= (Activity) context;
+            ////que la interface icomunicafragments sea igual ese contexto de la actividad:
+            ComunicaFragments= (proyecto.pidetucomida.Interfaces.ComunicaFragments) this.actividad;
+            //esto es necesario para establecer la comunicacion entre la lista y el detalle
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

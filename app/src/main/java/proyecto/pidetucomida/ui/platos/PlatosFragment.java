@@ -1,12 +1,17 @@
 package proyecto.pidetucomida.ui.platos;
 
+import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import java.util.ArrayList;
 
+import proyecto.pidetucomida.Interfaces.ComunicaFragments;
 import proyecto.pidetucomida.R;
 import proyecto.pidetucomida.adaptadores.AdaptadorComida;
 import proyecto.pidetucomida.bdSQLite.SQLiteHelper;
@@ -29,6 +35,10 @@ public class PlatosFragment extends Fragment {
     AdaptadorComida adaptadorComida= null;
 
     SQLiteHelper sqLiteHelper;
+    //
+    //Crear referencias para poder realizar la comunicacion entre el fragment detalle
+    Activity actividad;
+    ComunicaFragments ComunicaFragments;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +50,7 @@ public class PlatosFragment extends Fragment {
 
         gridView =  root.findViewById(R.id.gridplatos);
         lista = new ArrayList<>();
-        adaptadorComida = new AdaptadorComida (getContext(), R.layout.producto_items, lista);
+        adaptadorComida = new AdaptadorComida (getContext(), R.layout.producto_item, lista);
         gridView.setAdapter(adaptadorComida);
         //sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio NUMERIC,descripcion VARCHAR,valoracion NUMERIC)");
         sqLiteHelper = new SQLiteHelper(getContext(), "bd_producto", null, 1);
@@ -78,7 +88,35 @@ public class PlatosFragment extends Fragment {
                 cursor.close();
             }
         }
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String nombre = lista.get(position).getNombre();
+                Toast.makeText(getContext(), "Seleccionó: "+lista.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+                //enviar mediante la interface el objeto seleccionado al detalle
+                //se envia el objeto completo
+                //se utiliza la interface como puente para enviar el objeto seleccionado
+                ComunicaFragments.Emviarproducto(lista.get(position));
+                //luego en el mainactivity se hace la implementacion de la interface para implementar el metodo enviarpersona
+            }
+        });
+        //aqui asignamos el onclick del adaptador
+       /** adaptadorComida.setOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+       String nombre = lista.get(gridView.getPositionForView(v)).getNombre();
+       txtnombre.setText(nombre);
+       Toast.makeText(getContext(), "Seleccionó: "+lista.get(gridView.getPositionForView(v)).getNombre(), Toast.LENGTH_SHORT).show();
+       //enviar mediante la interface el objeto seleccionado al detalle
+       //se envia el objeto completo
+       //se utiliza la interface como puente para enviar el objeto seleccionado
+       ComunicaFragments.Emviarproducto(lista.get(gridView.getPositionForView(v)));
+       //luego en el mainactivity se hace la implementacion de la interface para implementar el metodo enviarpersona
+            }
+        });
+        */
+        return root;
 
         /*
         final TextView textView = root.findViewById(R.id.text_platos);
@@ -89,30 +127,24 @@ public class PlatosFragment extends Fragment {
             }
         });
         */
-        return root;
-
-
-
-
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        //esto es necesario para establecer la comunicacion entre la lista y el detalle
+        //si el contexto que le esta llegando es una instancia de un activity:
+        if(context instanceof Activity){
+            //voy a decirle a mi actividad que sea igual a dicho contesto. castin correspondiente:
+            this.actividad= (Activity) context;
+            ////que la interface icomunicafragments sea igual ese contexto de la actividad:
+            ComunicaFragments= (ComunicaFragments) this.actividad;
+            //esto es necesario para establecer la comunicacion entre la lista y el detalle
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
 }

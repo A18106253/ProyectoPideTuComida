@@ -13,13 +13,14 @@
         style="@android:style/Widget.Material.Light.RatingBar"
         android:layout_width="240dp"
         android:layout_height="57dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="21dp"
         android:numStars="5"
         android:outlineAmbientShadowColor="@color/colorblanco"
+        android:progressBackgroundTint=" @color/colorAmarillo"
         android:progressTint="#FF9800"
         android:rating="0"
-        android:stepSize="0.1"
+        android:stepSize="0.5"
         app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
@@ -123,20 +124,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnTipo" />
 
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="142dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="115dp"
-        android:background="@drawable/botones"
-        android:text="Registrar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbvaloracion"
-        app:layout_constraintVertical_bias="1.0" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="89dp"
@@ -151,19 +138,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNombres" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="561dp" />
+
     <Button
-        android:id="@+id/btnSiguiente"
-        android:layout_width="152dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/btnRegistrar"
+        android:layout_width="131dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="112dp"
         android:background="@drawable/botones"
+        android:gravity="center"
+        android:text="Registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSiguiente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:layout_width="135dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="112dp"
+        android:background="@drawable/botones"
+        android:gravity="center"
         android:text="Ver Lista"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toEndOf="@+id/btnRegistrar"
-        app:layout_constraintTop_toBottomOf="@+id/rbvaloracion"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="619dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

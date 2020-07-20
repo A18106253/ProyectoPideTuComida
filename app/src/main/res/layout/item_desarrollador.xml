@@ -42,17 +42,18 @@
 
                 <TextView
                     android:id="@+id/txtNombree"
-                    android:layout_width="265dp"
+                    android:layout_width="249dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
                     android:paddingTop="10dp"
                     android:text="TextView "
+                    android:textColor="@color/colorNegro"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtOcupacion"

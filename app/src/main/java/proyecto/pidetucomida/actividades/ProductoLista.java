@@ -18,6 +18,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -39,8 +42,10 @@ public class ProductoLista extends AppCompatActivity {
     GridView gridView;
     ArrayList<Productos> lista;
     AdaptadorComida adaptadorComida= null;
-
     SQLiteHelper sqLiteHelper;
+
+     Spinner  Tipo ;
+      int seleccion=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,9 @@ public class ProductoLista extends AppCompatActivity {
         lista = new ArrayList<>();
         adaptadorComida = new AdaptadorComida (this, R.layout.producto_items, lista);
         gridView.setAdapter(adaptadorComida);
+
+
+
     //sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio NUMERIC,descripcion VARCHAR,valoracion NUMERIC)");
         sqLiteHelper = new SQLiteHelper(this, "bd_producto", null, 1);
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS Producto (Id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR,tipo VARCHAR,imagen BLOB, precio INTEGER,descripcion VARCHAR,valoracion INTEGER)");
@@ -118,6 +126,7 @@ public class ProductoLista extends AppCompatActivity {
             dialog.show();
             return true;
         });
+
     }
 
 
@@ -126,17 +135,39 @@ public class ProductoLista extends AppCompatActivity {
 
         final Dialog dialog = new Dialog(activity);
         System.out.println("NO PASO");
-        dialog.setContentView(R.layout.actualizar_productos);
+        dialog.setContentView(R.layout.actualizar_producto);
         dialog.setTitle("Update");
         System.out.println("PASO");
 
         imagenFoto= dialog.findViewById(R.id.imgFoto);
         final EditText Nombre = dialog.findViewById(R.id.edtNombres);
-        final Spinner  Tipo = dialog.findViewById(R.id.spnTipo);
+                        Tipo = dialog.findViewById(R.id.spnTipo);
         final EditText  Precio=  dialog.findViewById(R.id.edtPrecios);
         final EditText  Descripcion =  dialog.findViewById(R.id.edtComentario);
         final RatingBar Valoracion =  dialog.findViewById(R.id.rtbEstrellitas);
-        Button btnActualizar = dialog.findViewById(R.id.btnUpdate);
+        Button btnUpdate = dialog.findViewById(R.id.btnUpdate);
+
+        ArrayList<String> ComboOpciones = new ArrayList<String>();
+        ComboOpciones.add("SELECCIONE");
+        ComboOpciones.add("COMIDAS");
+        ComboOpciones.add("BEBIDAS");
+        ComboOpciones.add("OFERTAS");
+
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(
+                this,R.layout.support_simple_spinner_dropdown_item,ComboOpciones);
+        Tipo.setAdapter(adapter);
+        Tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(adapterView.getContext(),"Seleccionado : "+i+adapterView.getItemAtPosition(i),Toast.LENGTH_LONG).show();
+                seleccion=Tipo.getSelectedItemPosition();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         // set width for dialog
         int width = (int) (activity.getResources().getDisplayMetrics().widthPixels * 0.95);
@@ -144,6 +175,8 @@ public class ProductoLista extends AppCompatActivity {
         int height = (int) (activity.getResources().getDisplayMetrics().heightPixels * 0.7);
         dialog.getWindow().setLayout(width, height);
         dialog.show();
+
+
 
         imagenFoto.setOnClickListener(v -> {
             // request photo library
@@ -153,7 +186,8 @@ public class ProductoLista extends AppCompatActivity {
                     888
             );
         });
-        btnActualizar.setOnClickListener(v -> {
+
+        btnUpdate.setOnClickListener(v -> {
             try {
                 RegistrarProductos.sqLiteHelper.updateData(
                         Nombre.getText().toString().trim(),
@@ -165,9 +199,10 @@ public class ProductoLista extends AppCompatActivity {
                         position
                 );
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(), " Se Actualizo correctamente!!!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), " Se Actualizo correctamente...!!!",Toast.LENGTH_SHORT).show();
             }
             catch (Exception error) {
+                Toast.makeText(getApplicationContext(), " No Se Puede Actualizar !!!",Toast.LENGTH_SHORT).show();
                 Log.e("error al Actualizar", error.getMessage());
             }
             updateFoodList();
@@ -184,9 +219,9 @@ public class ProductoLista extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 try {
                     RegistrarProductos.sqLiteHelper.deleteData(idProducto);
-                    Toast.makeText(getApplicationContext(), "Delete successfully!!!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Se Elimino Correctamente..!!!",Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
-                    Log.e("error", e.getMessage());
+                    Log.e("Error al Eliminar...", e.getMessage());
                 }
                 updateFoodList();
             }

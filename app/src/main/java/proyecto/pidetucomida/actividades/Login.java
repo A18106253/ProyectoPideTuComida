@@ -72,7 +72,6 @@ public class Login extends AppCompatActivity{
                    /*}else {
                        startActivity(new Intent(Login.this, MenuActivity.class)); //para probar nomas
                        finish();  }*/
-
                    edtEmail.setText(" ");
                    edtPass.setText(" ");
                } else{

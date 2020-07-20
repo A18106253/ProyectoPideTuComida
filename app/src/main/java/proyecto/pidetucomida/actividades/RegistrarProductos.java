@@ -86,6 +86,9 @@ public class RegistrarProductos extends AppCompatActivity {
 
              }
          });
+
+
+
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="421dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgFoto"
+                android:layout_width="405dp"
+                android:layout_height="101dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ageless" />
+
+            <EditText
+                android:id="@+id/edtNombres"
+                android:layout_width="410dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:ems="10"
+                android:hint="Nombre:"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/colorNegro" />
+
+            <Spinner
+                android:id="@+id/spnTipo"
+                android:layout_width="302dp"
+                android:layout_height="39dp"
+                android:backgroundTint="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/edtPrecios"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:ems="10"
+                android:hint="Precio:"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/colorNegro" />
+
+            <EditText
+                android:id="@+id/edtComentario"
+                android:layout_width="396dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:ems="10"
+                android:hint="Descripcion :"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/colorNegro" />
+
+            <RatingBar
+                android:id="@+id/rtbEstrellitas"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:numStars="5"
+                android:outlineAmbientShadowColor="@color/colorRosa"
+                android:progressTint="@color/colorAmarillo" />
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="411dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/botones"
+                android:text="Actualizar" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

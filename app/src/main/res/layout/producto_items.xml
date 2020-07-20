@@ -2,16 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorblanco"
-    android:orientation="horizontal">
+    android:layout_width="wrap_content"
+    android:layout_height="238dp"
+    android:background="@color/colorblanco">
 
 
     <ImageView
         android:id="@+id/fotocomida"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="94dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -26,53 +25,40 @@
 
     <TextView
         android:id="@+id/nombrecomida"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-3dp"
-        android:layout_marginTop="106dp"
-        android:layout_marginEnd="3dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_marginTop="98dp"
         android:text="Nombre"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="183dp" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/preciocomida"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="1dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_marginTop="133dp"
         android:text="Precio"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="19sp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="274dp" />
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/descripcioncomida"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
+        android:layout_width="408dp"
+        android:layout_height="39dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="205dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="2dp"
         android:text="Descripcion"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -81,17 +67,21 @@
     <RatingBar
         android:id="@+id/RTValoracion"
         style="@android:style/Widget.DeviceDefault.RatingBar.Indicator"
-        android:layout_width="180dp"
+        android:layout_width="183dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="259dp"
-        android:layout_marginEnd="117dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="197dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:isIndicator="true"
         android:numStars="5"
+        android:progressTint="@color/colorAmarillo"
         android:rating="0" />
-
 
 </RelativeLayout>

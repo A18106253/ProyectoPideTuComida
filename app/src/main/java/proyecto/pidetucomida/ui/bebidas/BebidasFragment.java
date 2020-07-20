@@ -48,7 +48,7 @@ public class BebidasFragment extends Fragment{
         System.out.println("no pasa");
 
         try {
-            cursor = sqLiteHelper.getData("select id,nombre,imagen,precio,descripcion,valoracion from producto");
+            cursor = sqLiteHelper.getData("select id,nombre,imagen,precio,descripcion,valoracion from producto where tipo='BEBIDAS'");
             System.out.println("Se ejecuto ");
             lista.clear();
             if (cursor != null && cursor.getCount() > 0) {

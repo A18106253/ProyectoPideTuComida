@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="286dp"
+        android:layout_height="54dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="44dp"
@@ -22,7 +22,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnOlvide"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPass" />
 

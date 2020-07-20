@@ -3,8 +3,10 @@ package proyecto.pidetucomida.actividades;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -90,37 +94,39 @@ public class MenuActivity extends AppCompatActivity {
         Intent idcombito = getIntent();
         String verificaridcombo = idcombito.getStringExtra("seleccion");
 
-        boolean mifragement=false;
+        //boolean mifragement=false;
         if (verificaridcombo!= null && idcombito.equals("1")){
             Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombito, Toast.LENGTH_SHORT).show();
-
+            addFragment(new PlatosFragment(),false,"PlatosFragment");
+            /*
             FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
             tx.replace(R.id.nav_platos, new PlatosFragment());
-            mifragement=true;
-            tx.commit();
-            drawer.closeDrawer(GravityCompat.START);
+            */
+
+           // mifragement=true;
+            //tx.commit();
+           // drawer.closeDrawer(GravityCompat.START);
             //return ;
 
         }else if(verificaridcombo!= null && idcombo.equals("2")){
             Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombito, Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.nav_bebidas);
+            //addFragment(new BebidasFragment(),false,"BebidasFragment");
+           // FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            //tx.replace(R.id.nav_bebidas, new BebidasFragment());
+           // mifragement=true;
 
-            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-            tx.replace(R.id.nav_bebidas, new BebidasFragment());
-            mifragement=true;
-
-            tx.commit();
-            drawer.closeDrawer(GravityCompat.START);
-
-
+            //tx.commit();
+           // drawer.closeDrawer(GravityCompat.START);
 
         }else if(verificaridcombo!= null && idcombo.equals("3")){
             Toast.makeText(getApplicationContext(), "ID CATEGORIA!"+idcombito, Toast.LENGTH_SHORT).show();
+            addFragment(new OfertasFragment(),true,"OfertasFragment");
+           // FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            //tx.add(R.id.nav_ofertas, new OfertasFragment());
+           // mifragement=true;
 
-            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-            tx.add(R.id.nav_ofertas, new OfertasFragment());
-            mifragement=true;
-
-            tx.commit();
+          //  tx.commit();
            // drawer.closeDrawer(GravityCompat.START);
 
         }
@@ -128,6 +134,23 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void addFragment(Fragment fragment, boolean addToBackStack,String tag) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+
+        if (addToBackStack) {
+            ft.addToBackStack(tag);
+        }
+        ft.replace(R.id.nav_host_fragment, fragment,tag);
+        ft.commitAllowingStateLoss();
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_carrito, container, false);
     }
 
     @Override

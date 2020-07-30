@@ -11,125 +11,204 @@
 
     <EditText
         android:id="@+id/edtNombres"
-        android:layout_width="312dp"
-        android:layout_height="53dp"
+        android:layout_width="285dp"
+        android:layout_height="46dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="104dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/button_rounded_border"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Nombres"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/edtApellido"
-        app:layout_constraintEnd_toEndOf="@+id/edtApellido"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/edtApellido"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
     <EditText
         android:id="@+id/edtApellido"
-        android:layout_width="308dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="279dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/button_rounded_border"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Apellidos"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNombres" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.279" />
 
     <EditText
         android:id="@+id/edtEmail"
-        android:layout_width="312dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="282dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/button_rounded_border"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/edtPass"
-        app:layout_constraintEnd_toEndOf="@+id/edtPass"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="@+id/edtApellido"
-        app:layout_constraintTop_toBottomOf="@+id/edtApellido" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.398" />
 
     <EditText
         android:id="@+id/edtPass"
-        android:layout_width="317dp"
-        android:layout_height="48dp"
+        android:layout_width="286dp"
+        android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/button_rounded_border"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/edtDireccion"
-        app:layout_constraintEnd_toEndOf="@+id/edtApellido"
-        app:layout_constraintStart_toStartOf="@+id/edtApellido"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
 
     <EditText
         android:id="@+id/edtTelefono"
-        android:layout_width="298dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="50dp"
+        android:layout_width="281dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_rounded_border"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Telefono"
         android:inputType="phone"
         android:maxLength="9"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
-        app:layout_constraintEnd_toEndOf="@+id/edtDireccion"
-        app:layout_constraintStart_toStartOf="@+id/edtDireccion"
-        app:layout_constraintTop_toBottomOf="@+id/edtDireccion" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.722"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714" />
 
     <EditText
         android:id="@+id/edtDireccion"
-        android:layout_width="301dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="282dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/button_rounded_border"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Dirección"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edtTelefono"
-        app:layout_constraintEnd_toEndOf="@+id/edtPass"
-        app:layout_constraintStart_toStartOf="@+id/edtPass"
-        app:layout_constraintTop_toBottomOf="@+id/edtPass" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.618" />
 
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="235dp"
         android:layout_height="53dp"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="157dp"
         android:background="@drawable/botones"
         android:onClick="onClick"
         android:text="Registrar"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edtDireccion"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="@+id/edtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtTelefono" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.849" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="44dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.194"
+        app:srcCompat="@drawable/ic_1" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="47dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.288"
+        app:srcCompat="@drawable/ic_2" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="44dp"
+        android:layout_height="34dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.398"
+        app:srcCompat="@drawable/ic_baseline_mail_outline_24" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="42dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_4" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="46dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.612"
+        app:srcCompat="@drawable/ic_5" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="38dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714"
+        app:srcCompat="@drawable/ic_baseline_phone_24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="76dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="359dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

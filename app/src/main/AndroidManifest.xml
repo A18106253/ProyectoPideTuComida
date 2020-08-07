@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_icono_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actividades.Controles"></activity>
+        <activity android:name=".actividades.MetodoPago"></activity>
+        <activity android:name=".actividades.Controles" />
         <activity android:name=".actividades.ProductoLista" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

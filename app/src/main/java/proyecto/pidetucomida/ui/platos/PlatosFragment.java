@@ -47,7 +47,6 @@ public class PlatosFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_platos, container, false);
 
 
-
         gridView =  root.findViewById(R.id.gridplatos);
         lista = new ArrayList<>();
         adaptadorComida = new AdaptadorComida (getContext(), R.layout.producto_item, lista);
@@ -88,6 +87,7 @@ public class PlatosFragment extends Fragment {
                 cursor.close();
             }
         }
+        //aqui asignamos el onclick del adaptador
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -101,21 +101,6 @@ public class PlatosFragment extends Fragment {
             }
         });
         //aqui asignamos el onclick del adaptador
-       /** adaptadorComida.setOnclickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-       String nombre = lista.get(gridView.getPositionForView(v)).getNombre();
-       txtnombre.setText(nombre);
-       Toast.makeText(getContext(), "Seleccionó: "+lista.get(gridView.getPositionForView(v)).getNombre(), Toast.LENGTH_SHORT).show();
-       //enviar mediante la interface el objeto seleccionado al detalle
-       //se envia el objeto completo
-       //se utiliza la interface como puente para enviar el objeto seleccionado
-       ComunicaFragments.Emviarproducto(lista.get(gridView.getPositionForView(v)));
-       //luego en el mainactivity se hace la implementacion de la interface para implementar el metodo enviarpersona
-            }
-        });
-        */
         return root;
 
         /*

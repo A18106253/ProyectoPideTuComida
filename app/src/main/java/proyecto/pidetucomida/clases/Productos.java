@@ -15,7 +15,21 @@ public class Productos implements Serializable {
 
     }
 
-   public Productos(String nombre, byte[] imagen,double precio, String descripcion, float valoracion, int id) {
+    public Productos(String nombre, double precio, String descripcion) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+    }
+
+    public Productos(String nombre, byte[] imagen, double precio, String descripcion,int id) {
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.id = id;
+    }
+
+    public Productos(String nombre, byte[] imagen, double precio, String descripcion, float valoracion, int id) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;

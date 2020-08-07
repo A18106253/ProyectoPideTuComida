@@ -7,16 +7,59 @@
     android:background="@drawable/fondo"
     tools:context=".ui.carrito.CarritoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <TextView
-        android:id="@+id/text_carrito"
-        android:layout_width="178dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="302dp"
-        android:text="Carrito"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerLista"
+        android:layout_width="388dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="393dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTotal"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="right"
+        android:text="0.0"
+        android:textColor="@color/colorNegro"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="97dp"
+        android:gravity="left"
+        android:text="Total a Pagar:"
+        android:textColor="@color/colorNegro"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerLista" />
+
+    <Button
+        android:id="@+id/btnPagar"
+        android:layout_width="209dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginBottom="28dp"
+        android:gravity="center"
+        android:text="Pagar"
+        android:textSize="15dp"
+        android:background="@drawable/botones"
+        android:textColor="@color/colorNegro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

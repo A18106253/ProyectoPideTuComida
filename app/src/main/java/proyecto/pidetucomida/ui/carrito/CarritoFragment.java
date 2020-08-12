@@ -9,30 +9,29 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import proyecto.pidetucomida.R;
-import proyecto.pidetucomida.actividades.MenuActivity;
-import proyecto.pidetucomida.actividades.MetodoPago;
+import proyecto.pidetucomida.actividades.MetodoPagar;
 import proyecto.pidetucomida.adaptadores.AdaptadorCarrito;
 import proyecto.pidetucomida.clases.Productos;
+import proyecto.pidetucomida.globalproducto.GlobalProducto;
 
 public class CarritoFragment extends Fragment {
     private CarritoViewModel carritoViewModel;
 
-    List<Productos> carroCompras;
     AdaptadorCarrito adaptador;
     RecyclerView recyclerLista;
     TextView txtTotal;
     Button btnPagar;
-
+    List<Productos> listaproductoscarrito;
+    String iddetalle="";
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         carritoViewModel = ViewModelProviders.of(this).get(CarritoViewModel.class);
@@ -48,22 +47,41 @@ public class CarritoFragment extends Fragment {
         btnPagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MetodoPago.class);
+                Intent intent = new Intent(getContext(), MetodoPagar.class);
                 startActivity(intent);
             }
         });
-        adaptador = new AdaptadorCarrito(getContext(), carroCompras, txtTotal);
-        recyclerLista.setAdapter(adaptador);
+
+        GlobalProducto gp=(GlobalProducto) getActivity().getApplicationContext();
+        listaproductoscarrito=new ArrayList<>();
+        listaproductoscarrito=gp.getGlobalista();
+        iddetalle= gp.getIdcomida();
+        if (listaproductoscarrito!=null){
+            listarcarrito();
+            adaptador=new AdaptadorCarrito(getContext(),listaproductoscarrito,txtTotal);
+            recyclerLista.setAdapter(adaptador);
+        }
+
+      //  adaptador = new AdaptadorCarrito(getContext(), carroCompras, txtTotal);
+     //   recyclerLista.setAdapter(adaptador);
+
         return root;
-        /**
-        final TextView textView = root.findViewById(R.id.text_carrito);
-        carritoViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-         */
 
     }
+
+
+    public  void listarcarrito(){
+                System.out.println(" Producto....................");
+               for(int i = 0 ; i < listaproductoscarrito.size() ; i++) {
+                    System.out.println(" Producto + Lista ID...................."+listaproductoscarrito.get(i).getId());
+                    System.out.println(" Producto + Nombre..................."+listaproductoscarrito.get(i).getNombre());
+                    System.out.println(" Producto + Precio................."+listaproductoscarrito.get(i).getPrecio());
+                    System.out.println(" Producto + Imagen................."+listaproductoscarrito.get(i).getImagen());
+                    System.out.println(" Producto + descripcion.................."+listaproductoscarrito.get(i).getDescripcion());
+
+                }
+
+    }
+
+
 }

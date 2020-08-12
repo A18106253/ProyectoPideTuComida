@@ -15,20 +15,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.io.Serializable;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
+import proyecto.pidetucomida.Interfaces.ComunicaFragments;
 import proyecto.pidetucomida.R;
+import proyecto.pidetucomida.actividades.MenuActivity;
 import proyecto.pidetucomida.clases.Productos;
+import proyecto.pidetucomida.globalproducto.GlobalProducto;
+import proyecto.pidetucomida.ui.carrito.CarritoFragment;
 
-public class DetalleProductoFragment extends Fragment {
+public class DetalleProductoFragment extends Fragment{
     List<Productos> listaProductos;
     List<Productos> carroCompras;
+
     TextView nombre,precio,descripcion,txtcantidad;
     ImageView imagen;
     RatingBar valoracion;
     Button btnAcarrito;
+    byte[] productoFoto;
+    int idproducto=0;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,14 +52,16 @@ public class DetalleProductoFragment extends Fragment {
 
         //Crear bundle para recibir el objeto enviado por parametro.
         Bundle objetoProducto = getArguments();
-        Productos producto = null;;
+        Productos producto = null;
         //validacion para verificar si existen argumentos para mostrar
         if(objetoProducto !=null){
             producto = (Productos) objetoProducto.getSerializable("objeto");
+            idproducto=producto.getId();
             nombre.setText(producto.getNombre());
-            byte[] productoFoto = producto.getImagen();
+            productoFoto = producto.getImagen();
             Bitmap bitmap = BitmapFactory.decodeByteArray(productoFoto, 0, productoFoto.length);
             imagen.setImageBitmap(bitmap);
+
             //imagen.setImageResource(producto.getImagen());
             precio.setText(String.valueOf(producto.getPrecio()));
             descripcion.setText(producto.getDescripcion());
@@ -58,32 +69,25 @@ public class DetalleProductoFragment extends Fragment {
 
         }
 
+        GlobalProducto gp=(GlobalProducto) getActivity().getApplicationContext();
+        gp.setIdcomida(String.valueOf(idproducto));
+        listaProductos =new ArrayList<>();
+
         btnAcarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listaProductos =new ArrayList<>();
                 int counter = Integer.parseInt(txtcantidad.getText().toString());
+                Productos productos=new Productos(nombre.getText().toString(),productoFoto,Double.parseDouble(precio.getText().toString()),
+                descripcion.getText().toString(),idproducto);
+                listaProductos.add(productos);
                 ++counter;
                 txtcantidad.setText(String.valueOf(counter));
-                listaProductos.add(new Productos(nombre.getText().toString(),Double.parseDouble(precio.getText().toString()),descripcion.getText().toString()));
-                System.out.println(" Producto....................");
-                for(int i = 0 ; i < listaProductos.size() ; i++) {
-                    System.out.println(" Producto + Lista...................."+listaProductos.get(i));
-                    System.out.println(" Producto + Nombre..................."+listaProductos.get(i).getNombre());
-                    System.out.println(" Producto + Precio................."+listaProductos.get(i).getPrecio());
-                    System.out.println(" Producto + descripcion.................."+listaProductos.get(i).getDescripcion());
-
-                }
-
-                // intent = new Intent(context, CarroCompra.class);
-                //intent.putExtra("CarroCompras", (Serializable) carroCompra);
-                //context.startActivity(intent);
+                gp.setGlobalista(listaProductos);
 
             }
         });
 
         return view;
     }
-
 
 }

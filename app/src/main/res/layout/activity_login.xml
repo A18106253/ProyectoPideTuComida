@@ -9,21 +9,20 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="286dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="231dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="45dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/botones"
+        android:gravity="center"
         android:onClick="onClick"
         android:text="Iniciar Sesion"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/btnOlvide"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPass" />
 

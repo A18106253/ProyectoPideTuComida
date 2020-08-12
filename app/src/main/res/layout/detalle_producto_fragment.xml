@@ -96,6 +96,7 @@
                 android:background="@drawable/botones"
                 android:text="Agregar al carrito"
                 android:textSize="18dp" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

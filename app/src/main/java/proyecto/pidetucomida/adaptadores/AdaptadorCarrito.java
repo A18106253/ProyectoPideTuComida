@@ -9,14 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import proyecto.pidetucomida.R;
 import proyecto.pidetucomida.clases.Productos;
+import proyecto.pidetucomida.globalproducto.GlobalProducto;
 
 public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.ProductosViewHolder> {
     Context context;
@@ -29,6 +30,16 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
         this.carroCompra = carroCompra;
         this.tvTotal = tvTotal;
 
+        /**GlobalProducto gp=(GlobalProducto) getActivity().getApplicationContext();
+        listaproductoscarrito=new ArrayList<>();
+        listaproductoscarrito=gp.getGlobalista();
+        iddetalle= gp.getIdcomida();
+        System.out.println("ID DETALLE:"+iddetalle);
+
+        if (listaproductoscarrito!=null){
+            listarcarrito();
+        }
+        */
         for(int i = 0 ; i < carroCompra.size() ; i++) {
             total = total + Double.parseDouble(""+carroCompra.get(i).getPrecio());
         }
@@ -44,14 +55,12 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
     }
     @Override
     public void onBindViewHolder(@NonNull final ProductosViewHolder productosViewHolder, final int i) {
-
         productosViewHolder.tvNomProducto.setText(carroCompra.get(i).getNombre());
         byte[] prodFoto = carroCompra.get(i).getImagen();
         Bitmap bitmap = BitmapFactory.decodeByteArray(prodFoto, 0, prodFoto.length);
         productosViewHolder.imgfotos.setImageBitmap(bitmap);
-        productosViewHolder.tvPrecio.setText(String.valueOf(carroCompra.get(i).getPrecio()));
-        productosViewHolder.tvDescripcion.setText(""+carroCompra.get(i).getDescripcion());
-
+        productosViewHolder.tvPrecio.setText(new StringBuilder().append("S/. ").append(carroCompra.get(i).getPrecio()).toString());
+        productosViewHolder.tvDescripcion.setText(new StringBuilder().append(" ").append(carroCompra.get(i).getDescripcion()).toString());
 
     }
     @Override
@@ -59,13 +68,11 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
         return carroCompra.size();
     }
     public class ProductosViewHolder extends RecyclerView.ViewHolder {
-
         TextView tvNomProducto, tvDescripcion, tvPrecio;
         ImageView imgfotos;
 
         public ProductosViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tvNomProducto = itemView.findViewById(R.id.txtNombress);
             imgfotos = itemView.findViewById(R.id.imgfotos);
             tvDescripcion = itemView.findViewById(R.id.txtDescripcionn);

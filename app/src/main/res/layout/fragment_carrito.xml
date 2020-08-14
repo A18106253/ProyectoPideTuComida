@@ -30,6 +30,7 @@
         android:text="0.0"
         android:textColor="@color/colorNegro"
         android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
@@ -44,6 +45,7 @@
         android:layout_marginEnd="135dp"
         android:gravity="left"
         android:text="Total a Pagar:"
+        android:textStyle="bold"
         android:textColor="@color/colorNegro"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/txtTotal"
@@ -54,14 +56,14 @@
         android:id="@+id/btnPagar"
         android:layout_width="163dp"
         android:layout_height="47dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/botones"
         android:gravity="center"
         android:text="Pagar"
         android:textColor="@color/colorNegro"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

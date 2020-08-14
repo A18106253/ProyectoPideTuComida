@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,7 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
     double total = 0;
 
     public AdaptadorCarrito(Context context, List<Productos> carroCompra, TextView tvTotal) {
+
         this.context = context;
         this.carroCompra = carroCompra;
         this.tvTotal = tvTotal;

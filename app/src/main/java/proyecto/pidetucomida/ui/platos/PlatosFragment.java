@@ -63,7 +63,6 @@ public class PlatosFragment extends Fragment {
             System.out.println("Se ejecuto ");
             lista.clear();
             if (cursor != null && cursor.getCount() > 0) {
-
                 while (cursor.moveToNext()) {
                     int id = cursor.getInt(0);
                     String nombre = cursor.getString(1);

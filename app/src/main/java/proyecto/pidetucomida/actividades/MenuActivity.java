@@ -26,15 +26,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import proyecto.pidetucomida.Interfaces.ComunicaFragments;
 import proyecto.pidetucomida.R;
 import proyecto.pidetucomida.clases.Productos;
 import proyecto.pidetucomida.ui.bebidas.BebidasFragment;
-import proyecto.pidetucomida.ui.carrito.CarritoFragment;
 import proyecto.pidetucomida.ui.detalles.DetalleProductoFragment;
 import proyecto.pidetucomida.ui.ofertas.OfertasFragment;
 import proyecto.pidetucomida.ui.platos.PlatosFragment;
@@ -47,7 +42,6 @@ public class MenuActivity extends AppCompatActivity implements ComunicaFragments
     String email="";
     String correo = "";
     DetalleProductoFragment detalleProductoFragment;
-    CarritoFragment carritoFragment;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -92,7 +86,7 @@ public class MenuActivity extends AppCompatActivity implements ComunicaFragments
 
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home,R.id.nav_platos,R.id.nav_bebidas, R.id.nav_ofertas,R.id.nav_carrito,R.id.nav_empresa,R.id.nav_desarrolladores,R.id.nav_maps,R.id.nav_gallery)
+                R.id.nav_home,R.id.nav_platos,R.id.nav_bebidas, R.id.nav_ofertas,R.id.nav_carrito,R.id.nav_empresa,R.id.nav_desarrolladores,R.id.nav_maps)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -142,7 +136,10 @@ public class MenuActivity extends AppCompatActivity implements ComunicaFragments
            // drawer.closeDrawer(GravityCompat.START);
 
         }
-        //-----------
+
+
+
+
     }
 
     public void addFragment(Fragment fragment, boolean addToBackStack,String tag) {
@@ -178,7 +175,7 @@ public class MenuActivity extends AppCompatActivity implements ComunicaFragments
 
     @Override
     public void Emviarproducto(Productos producto) {
-        //gracias a haer implementado de la interface "ComunicaFragments" se tiene la implementacion del metodo enviarPersona
+        //gracias a hbaer implementado de la interface "ComunicaFragments" se tiene la implementacion del metodo enviarPersona
         //o mejor dicho este metodo.
         //Aqui se realiza toda la logica necesaria para poder realizar el envio
         detalleProductoFragment = new DetalleProductoFragment();
@@ -196,5 +193,4 @@ public class MenuActivity extends AppCompatActivity implements ComunicaFragments
         fra.commit();
 
     }
-
 }

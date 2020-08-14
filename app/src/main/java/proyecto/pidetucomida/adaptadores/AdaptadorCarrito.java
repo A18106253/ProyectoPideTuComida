@@ -14,14 +14,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import proyecto.pidetucomida.R;
 import proyecto.pidetucomida.clases.Productos;
-import proyecto.pidetucomida.globalproducto.GlobalProducto;
 
-public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.ProductosViewHolder> {
+public class AdaptadorCarrito  extends RecyclerView.Adapter<AdaptadorCarrito.ProductosViewHolder>{
     Context context;
     List<Productos> carroCompra;
     TextView tvTotal;
@@ -33,16 +31,7 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
         this.carroCompra = carroCompra;
         this.tvTotal = tvTotal;
 
-        /**GlobalProducto gp=(GlobalProducto) getActivity().getApplicationContext();
-        listaproductoscarrito=new ArrayList<>();
-        listaproductoscarrito=gp.getGlobalista();
-        iddetalle= gp.getIdcomida();
-        System.out.println("ID DETALLE:"+iddetalle);
 
-        if (listaproductoscarrito!=null){
-            listarcarrito();
-        }
-        */
         for(int i = 0 ; i < carroCompra.size() ; i++) {
             total = total + Double.parseDouble(""+carroCompra.get(i).getPrecio());
         }
@@ -53,7 +42,7 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
     @NonNull
     @Override
     public ProductosViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_carrito, null, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.items_carrito, null, false);
         return new ProductosViewHolder(v);
     }
     @Override
@@ -65,14 +54,37 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
         productosViewHolder.tvPrecio.setText(new StringBuilder().append("S/. ").append(carroCompra.get(i).getPrecio()).toString());
         productosViewHolder.tvDescripcion.setText(new StringBuilder().append(" ").append(carroCompra.get(i).getDescripcion()).toString());
 
+        productosViewHolder.imgfotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Position: " +
+                        productosViewHolder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
+    public void removeItem(int position){
+        carroCompra.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Productos producto,int position){
+        carroCompra.add(position, producto);
+        notifyItemInserted(position);
+    }
+
     @Override
     public int getItemCount() {
         return carroCompra.size();
     }
+
+
     public class ProductosViewHolder extends RecyclerView.ViewHolder {
+
         TextView tvNomProducto, tvDescripcion, tvPrecio;
         ImageView imgfotos;
+       public  RelativeLayout LayoutBorrar,LayoutOculto;
 
         public ProductosViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,8 +92,12 @@ public class AdaptadorCarrito  extends  RecyclerView.Adapter<AdaptadorCarrito.Pr
             imgfotos = itemView.findViewById(R.id.imgfotos);
             tvDescripcion = itemView.findViewById(R.id.txtDescripcionn);
             tvPrecio = itemView.findViewById(R.id.txtprecioo);
+            LayoutBorrar = itemView.findViewById(R.id.LayoutBorrar);
+            LayoutOculto = itemView.findViewById(R.id.LayoutOculto);
+
 
         }
+
     }
 
 
